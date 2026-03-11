@@ -1,0 +1,391 @@
+// ============================================================
+// AIOS — Prisma Database Schema
+// PostgreSQL with full AIOS data model
+// ============================================================
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl", "linux-musl-openssl-3.0.x", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─────────────────────────────────────────────
+// Auth & Users
+// ─────────────────────────────────────────────
+
+enum Role {
+  USER
+  ADMIN
+  MODERATOR
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  username     String   @unique
+  passwordHash String
+  role         Role     @default(USER)
+  avatar       String?
+  bio          String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations
+  ratings      ToolRating[]
+  prompts      Prompt[]
+  bookmarks    Bookmark[]
+  comments     Comment[]
+
+  @@map("users")
+}
+
+model RefreshToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@map("refresh_tokens")
+}
+
+// ─────────────────────────────────────────────
+// AI Tools
+// ─────────────────────────────────────────────
+
+enum ToolStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model AiTool {
+  id             String     @id @default(cuid())
+  slug           String     @unique
+  name           String
+  tagline        String
+  description    String     @db.Text
+  website        String
+  logoUrl        String?
+  screenshotUrl  String?
+  category       String
+  tags           String[]
+  pricing        String     @default("Free") // Free, Freemium, Paid, Enterprise
+  pricingDetails Json?      // { free: "...", pro: "$X/mo", enterprise: "Custom" }
+  status         ToolStatus @default(PENDING)
+
+  // Metrics
+  trendingScore  Float      @default(0)
+  weeklyGrowth   Float      @default(0)
+  totalViews     Int        @default(0)
+  launchDate     DateTime?
+
+  // Comparison fields
+  contextWindow  String?
+  apiAvailable   Boolean    @default(false)
+  supportedTasks String[]
+  features       Json?      // Array of feature strings
+
+  // Scraping metadata
+  sourceUrl      String?
+  lastScraped    DateTime?
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  // Relations
+  ratings        ToolRating[]
+  bookmarks      Bookmark[]
+  comments       Comment[]
+
+  @@index([category])
+  @@index([trendingScore(sort: Desc)])
+  @@index([createdAt(sort: Desc)])
+  @@map("ai_tools")
+}
+
+model ToolRating {
+  id        String   @id @default(cuid())
+  userId    String
+  toolId    String
+  rating    Int      // 1-5
+  review    String?  @db.Text
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tool      AiTool   @relation(fields: [toolId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, toolId])
+  @@map("tool_ratings")
+}
+
+// ─────────────────────────────────────────────
+// AI Models Leaderboard
+// ─────────────────────────────────────────────
+
+enum ModelType {
+  LLM
+  IMAGE
+  AUDIO
+  VIDEO
+  CODE
+  EMBEDDING
+  MULTIMODAL
+}
+
+model AiModel {
+  id              String    @id @default(cuid())
+  slug            String    @unique
+  name            String
+  organization    String
+  modelType       ModelType
+  description     String    @db.Text
+  releaseDate     DateTime?
+  website         String?
+  apiAvailable    Boolean   @default(false)
+  openSource      Boolean   @default(false)
+  architecture    String?   // GPT, Claude, Gemini, Llama, etc.
+  parameterCount  String?   // e.g. "70B", "8B"
+  contextWindow   Int?      // in tokens
+
+  // Benchmark scores (JSON flexible)
+  benchmarks      Json?     // { mmlu: 90.1, hellaswag: 95.3, ... }
+  capabilities    String[]  // e.g. ["code", "reasoning", "vision"]
+
+  trendingScore   Float     @default(0)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([modelType])
+  @@index([organization])
+  @@map("ai_models")
+}
+
+// ─────────────────────────────────────────────
+// Research Papers
+// ─────────────────────────────────────────────
+
+model ResearchPaper {
+  id              String   @id @default(cuid())
+  arxivId         String?  @unique
+  title           String
+  authors         String[]
+  abstract        String   @db.Text
+  aiSummary       String?  @db.Text  // LLM-generated summary
+  source          String   @default("arxiv")
+  category        String?
+  tags            String[]
+  publicationDate DateTime?
+  link            String
+  pdfLink         String?
+  citationCount   Int      @default(0)
+  trendingScore   Float    @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([publicationDate(sort: Desc)])
+  @@index([trendingScore(sort: Desc)])
+  @@map("research_papers")
+}
+
+// ─────────────────────────────────────────────
+// GitHub Repositories
+// ─────────────────────────────────────────────
+
+model GitHubRepo {
+  id            String   @id @default(cuid())
+  repoId        BigInt   @unique  // GitHub repo ID
+  name          String
+  fullName      String   @unique // owner/repo
+  description   String?  @db.Text
+  language      String?
+  stars         Int      @default(0)
+  forks         Int      @default(0)
+  watchers      Int      @default(0)
+  topics        String[]
+  repoUrl       String
+  homepage      String?
+  weeklyGrowth  Int      @default(0)   // star growth this week
+  monthlyGrowth Int      @default(0)
+  trendingScore Float    @default(0)
+  isFork        Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  lastScraped   DateTime?
+  pushedAt      DateTime?
+
+  @@index([stars(sort: Desc)])
+  @@index([weeklyGrowth(sort: Desc)])
+  @@map("github_repos")
+}
+
+// ─────────────────────────────────────────────
+// AI Startups
+// ─────────────────────────────────────────────
+
+enum FundingRound {
+  PRE_SEED
+  SEED
+  SERIES_A
+  SERIES_B
+  SERIES_C
+  SERIES_D_PLUS
+  IPO
+  ACQUIRED
+  GRANT
+  UNKNOWN
+}
+
+model AiStartup {
+  id             String       @id @default(cuid())
+  name           String
+  slug           String       @unique
+  description    String       @db.Text
+  website        String?
+  logoUrl        String?
+  country        String?
+  city           String?
+  industry       String?
+  founded        Int?         // year
+  employees      String?      // "1-10", "11-50", etc.
+  tags           String[]
+
+  // Funding info
+  fundingRound   FundingRound @default(UNKNOWN)
+  fundingAmount  BigInt?      // in USD cents
+  fundingDate    DateTime?
+  investors      String[]     // investor names
+  totalFunding   BigInt?      // cumulative
+
+  trendingScore  Float        @default(0)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  @@map("ai_startups")
+}
+
+// ─────────────────────────────────────────────
+// Prompt Library
+// ─────────────────────────────────────────────
+
+enum PromptStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model Prompt {
+  id           String       @id @default(cuid())
+  title        String
+  slug         String       @unique
+  description  String?
+  promptText   String       @db.Text
+  usageExample String?      @db.Text
+  category     String
+  tags         String[]
+  model        String?      // Recommended model
+  status       PromptStatus @default(PENDING)
+  copyCount    Int          @default(0)
+  rating       Float        @default(0)
+  ratingCount  Int          @default(0)
+
+  authorId     String?
+  author       User?        @relation(fields: [authorId], references: [id], onDelete: SetNull)
+
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  @@index([category])
+  @@map("prompts")
+}
+
+// ─────────────────────────────────────────────
+// Trend Intelligence
+// ─────────────────────────────────────────────
+
+model TrendData {
+  id          String   @id @default(cuid())
+  entityType  String   // "tool", "model", "repo", "paper", "startup"
+  entityId    String
+  metricName  String   // "github_stars", "mentions", "citations"
+  metricValue Float
+  recordedAt  DateTime @default(now())
+
+  @@index([entityType, entityId])
+  @@index([recordedAt(sort: Desc)])
+  @@map("trend_data")
+}
+
+model AiNewsItem {
+  id          String   @id @default(cuid())
+  title       String
+  summary     String   @db.Text
+  url         String   @unique
+  source      String
+  category    String?
+  tags        String[]
+  publishedAt DateTime?
+  createdAt   DateTime @default(now())
+
+  @@index([publishedAt(sort: Desc)])
+  @@map("ai_news")
+}
+
+// ─────────────────────────────────────────────
+// Engagement (Bookmarks, Comments)
+// ─────────────────────────────────────────────
+
+model Bookmark {
+  id         String   @id @default(cuid())
+  userId     String
+  toolId     String?
+  createdAt  DateTime @default(now())
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tool       AiTool?  @relation(fields: [toolId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, toolId])
+  @@map("bookmarks")
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  userId    String
+  toolId    String
+  content   String   @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tool      AiTool   @relation(fields: [toolId], references: [id], onDelete: Cascade)
+
+  @@map("comments")
+}
+
+// ─────────────────────────────────────────────
+// Admin — Scraping Job Logs
+// ─────────────────────────────────────────────
+
+enum JobStatus {
+  RUNNING
+  COMPLETED
+  FAILED
+}
+
+model ScrapingJob {
+  id          String    @id @default(cuid())
+  jobName     String
+  status      JobStatus @default(RUNNING)
+  itemsFound  Int       @default(0)
+  itemsSaved  Int       @default(0)
+  error       String?   @db.Text
+  startedAt   DateTime  @default(now())
+  completedAt DateTime?
+
+  @@index([jobName])
+  @@index([startedAt(sort: Desc)])
+  @@map("scraping_jobs")
+}

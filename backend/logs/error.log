@@ -1,0 +1,197 @@
+2026-03-11 12:28:20 [[31merror[39m]: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+    at async _r.start (/app/node_modules/@prisma/client/runtime/library.js:112:1976)
+    at async start (/app/dist/index.js:120:9)
+2026-03-11 12:29:12 [[31merror[39m]: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+    at async _r.start (/app/node_modules/@prisma/client/runtime/library.js:112:1976)
+    at async start (/app/dist/index.js:120:9)
+2026-03-11 12:29:17 [[31merror[39m]: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+    at async _r.start (/app/node_modules/@prisma/client/runtime/library.js:112:1976)
+    at async start (/app/dist/index.js:120:9)
+2026-03-11 12:29:19 [[31merror[39m]: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+    at async _r.start (/app/node_modules/@prisma/client/runtime/library.js:112:1976)
+    at async start (/app/dist/index.js:120:9)
+2026-03-11 12:29:21 [[31merror[39m]: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+    at async _r.start (/app/node_modules/@prisma/client/runtime/library.js:112:1976)
+    at async start (/app/dist/index.js:120:9)
+2026-03-11 12:29:22 [[31merror[39m]: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+    at async _r.start (/app/node_modules/@prisma/client/runtime/library.js:112:1976)
+    at async start (/app/dist/index.js:120:9)
+2026-03-11 12:29:25 [[31merror[39m]: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+    at async _r.start (/app/node_modules/@prisma/client/runtime/library.js:112:1976)
+    at async start (/app/dist/index.js:120:9)
+2026-03-11 12:29:28 [[31merror[39m]: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+    at async _r.start (/app/node_modules/@prisma/client/runtime/library.js:112:1976)
+    at async start (/app/dist/index.js:120:9)
+2026-03-11 12:29:32 [[31merror[39m]: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+    at async _r.start (/app/node_modules/@prisma/client/runtime/library.js:112:1976)
+    at async start (/app/dist/index.js:120:9)
+2026-03-11 12:29:40 [[31merror[39m]: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+    at async _r.start (/app/node_modules/@prisma/client/runtime/library.js:112:1976)
+    at async start (/app/dist/index.js:120:9)
+2026-03-11 12:29:55 [[31merror[39m]: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+    at async _r.start (/app/node_modules/@prisma/client/runtime/library.js:112:1976)
+    at async start (/app/dist/index.js:120:9)
+2026-03-11 12:30:23 [[31merror[39m]: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+    at async _r.start (/app/node_modules/@prisma/client/runtime/library.js:112:1976)
+    at async start (/app/dist/index.js:120:9)
+2026-03-11 12:30:52 [[31merror[39m]: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+    at async _r.start (/app/node_modules/@prisma/client/runtime/library.js:112:1976)
+    at async start (/app/dist/index.js:120:9)
+2026-03-11 12:30:54 [[31merror[39m]: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+    at async _r.start (/app/node_modules/@prisma/client/runtime/library.js:112:1976)
+    at async start (/app/dist/index.js:120:9)
+2026-03-11 12:30:55 [[31merror[39m]: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+    at async _r.start (/app/node_modules/@prisma/client/runtime/library.js:112:1976)
+    at async start (/app/dist/index.js:120:9)
+2026-03-11 12:30:57 [[31merror[39m]: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+    at async _r.start (/app/node_modules/@prisma/client/runtime/library.js:112:1976)
+    at async start (/app/dist/index.js:120:9)
+2026-03-11 12:30:59 [[31merror[39m]: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+    at async _r.start (/app/node_modules/@prisma/client/runtime/library.js:112:1976)
+    at async start (/app/dist/index.js:120:9)
+2026-03-11 12:31:02 [[31merror[39m]: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+    at async _r.start (/app/node_modules/@prisma/client/runtime/library.js:112:1976)
+    at async start (/app/dist/index.js:120:9)
+2026-03-11 12:31:06 [[31merror[39m]: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+    at async _r.start (/app/node_modules/@prisma/client/runtime/library.js:112:1976)
+    at async start (/app/dist/index.js:120:9)
+2026-03-11 12:31:14 [[31merror[39m]: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+    at async _r.start (/app/node_modules/@prisma/client/runtime/library.js:112:1976)
+    at async start (/app/dist/index.js:120:9)
+2026-03-11 12:31:28 [[31merror[39m]: PrismaClientInitializationError: Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+    at Object.loadLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:10243)
+    at async _r.loadEngine (/app/node_modules/@prisma/client/runtime/library.js:112:448)
+    at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
+    at async _r.start (/app/node_modules/@prisma/client/runtime/library.js:112:1976)
+    at async start (/app/dist/index.js:120:9)

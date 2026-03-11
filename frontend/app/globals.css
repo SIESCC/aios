@@ -1,0 +1,216 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   AIOS — Global Design System
+   Bloomberg Terminal × Product Hunt dark aesthetic
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+@layer base {
+  :root {
+    /* Dark terminal theme */
+    --background: 222 22% 6%;
+    --foreground: 210 40% 96%;
+    --card: 222 22% 8%;
+    --card-foreground: 210 40% 96%;
+    --popover: 222 22% 8%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 239 84% 67%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 222 22% 12%;
+    --secondary-foreground: 210 40% 90%;
+    --muted: 222 22% 14%;
+    --muted-foreground: 215 20% 55%;
+    --accent: 239 84% 67%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 222 22% 14%;
+    --input: 222 22% 12%;
+    --ring: 239 84% 67%;
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    background-color: hsl(222, 22%, 6%);
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 64px 64px;
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(222, 22%, 8%);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(239, 84%, 40%);
+    border-radius: 3px;
+  }
+
+  ::selection {
+    background: hsl(239, 84%, 30%);
+    color: white;
+  }
+}
+
+@layer components {
+  /* ── Glass Card ─────────────────────────────────────────── */
+  .glass-card {
+    @apply relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.03];
+    backdrop-filter: blur(20px);
+    background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.05), inset 0 1px 0 rgba(255,255,255,0.05);
+    transition: all 0.2s ease;
+  }
+
+  .glass-card:hover {
+    border-color: rgba(79, 85, 255, 0.3);
+    box-shadow: 0 0 0 1px rgba(79,85,255,0.2), 0 8px 32px rgba(79,85,255,0.08), inset 0 1px 0 rgba(255,255,255,0.08);
+    transform: translateY(-1px);
+  }
+
+  /* ── Neon Button ────────────────────────────────────────── */
+  .btn-neon {
+    @apply relative px-5 py-2.5 rounded-lg font-semibold text-sm overflow-hidden;
+    background: linear-gradient(135deg, #4f55ff, #7c3aed);
+    box-shadow: 0 0 20px rgba(79,85,255,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+    transition: all 0.2s ease;
+  }
+
+  .btn-neon:hover {
+    box-shadow: 0 0 30px rgba(79,85,255,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
+    transform: translateY(-1px);
+  }
+
+  /* ── Trending Badge ─────────────────────────────────────── */
+  .trending-badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold;
+    background: linear-gradient(135deg, rgba(255,107,53,0.2), rgba(255,107,53,0.1));
+    border: 1px solid rgba(255,107,53,0.3);
+    color: #ff6b35;
+  }
+
+  /* ── Score Bar ──────────────────────────────────────────── */
+  .score-bar {
+    @apply h-1.5 rounded-full overflow-hidden bg-white/5;
+  }
+
+  .score-bar-fill {
+    @apply h-full rounded-full;
+    background: linear-gradient(90deg, #4f55ff, #00f5ff);
+    box-shadow: 0 0 8px rgba(0, 245, 255, 0.4);
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ── Terminal Text ──────────────────────────────────────── */
+  .terminal-text {
+    font-family: 'JetBrains Mono', monospace;
+    @apply text-neon-cyan text-sm;
+  }
+
+  /* ── Category Pill ──────────────────────────────────────── */
+  .category-pill {
+    @apply px-3 py-1 rounded-full text-xs font-medium cursor-pointer;
+    background: rgba(79,85,255,0.1);
+    border: 1px solid rgba(79,85,255,0.2);
+    color: #9aafff;
+    transition: all 0.15s ease;
+  }
+
+  .category-pill:hover, .category-pill.active {
+    background: rgba(79,85,255,0.25);
+    border-color: rgba(79,85,255,0.4);
+    color: #fff;
+  }
+
+  /* ── Stat Card ──────────────────────────────────────────── */
+  .stat-card {
+    @apply glass-card p-6;
+  }
+
+  /* ── Section Header ─────────────────────────────────────── */
+  .section-header {
+    @apply flex items-center gap-3 mb-6;
+  }
+
+  .section-header-line {
+    @apply w-8 h-0.5 rounded-full;
+    background: linear-gradient(90deg, #4f55ff, transparent);
+  }
+
+  /* ── Shimmer Loading ────────────────────────────────────── */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255,255,255,0.04) 25%,
+      rgba(255,255,255,0.08) 50%,
+      rgba(255,255,255,0.04) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s linear infinite;
+  }
+
+  /* ── Grid Layout ────────────────────────────────────────── */
+  .tools-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4;
+  }
+
+  /* ── Leaderboard Row ────────────────────────────────────── */
+  .leaderboard-row {
+    @apply flex items-center gap-4 p-4 rounded-xl border border-transparent;
+    transition: all 0.15s ease;
+  }
+
+  .leaderboard-row:hover {
+    @apply border-white/5 bg-white/[0.02];
+  }
+}
+
+@layer utilities {
+  /* Neon text effects */
+  .text-neon-blue { color: #4f55ff; text-shadow: 0 0 20px rgba(79,85,255,0.5); }
+  .text-neon-cyan { color: #00f5ff; text-shadow: 0 0 15px rgba(0,245,255,0.4); }
+  .text-neon-green { color: #00ff88; text-shadow: 0 0 15px rgba(0,255,136,0.4); }
+  .text-neon-orange { color: #ff6b35; text-shadow: 0 0 15px rgba(255,107,53,0.4); }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #fff 0%, #9aafff 50%, #4f55ff 100%);
+  }
+
+  .gradient-text-brand {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #4f55ff, #00f5ff);
+  }
+
+  /* Glow effects */
+  .glow-blue { box-shadow: 0 0 20px rgba(79,85,255,0.3); }
+  .glow-cyan { box-shadow: 0 0 20px rgba(0,245,255,0.3); }
+  .glow-orange { box-shadow: 0 0 20px rgba(255,107,53,0.3); }
+
+  /* No scrollbar */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}

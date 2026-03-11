@@ -1,0 +1,382 @@
+2026-03-11 12:19:24,661 [INFO] orchestrator: 🚀 AIOS Orchestrator starting...
+2026-03-11 12:19:24,662 [INFO] orchestrator: ▶ Starting arXiv scraper...
+2026-03-11 12:19:25,548 [INFO] arxiv_scraper: Fetched 20 papers for cs.AI
+2026-03-11 12:19:25,556 [WARNING] arxiv_scraper: Failed to save paper 2603.08835: relation "research_papers" does not exist
+LINE 2:                 INSERT INTO research_papers (
+                                    ^
+
+2026-03-11 12:19:25,558 [WARNING] arxiv_scraper: Failed to save paper 2603.08852: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:25,559 [WARNING] arxiv_scraper: Failed to save paper 2603.08877: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:25,560 [WARNING] arxiv_scraper: Failed to save paper 2603.08933: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:25,562 [WARNING] arxiv_scraper: Failed to save paper 2603.08938: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:25,563 [WARNING] arxiv_scraper: Failed to save paper 2603.08954: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:25,565 [WARNING] arxiv_scraper: Failed to save paper 2603.08964: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:25,566 [WARNING] arxiv_scraper: Failed to save paper 2603.09018: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:25,567 [WARNING] arxiv_scraper: Failed to save paper 2603.09022: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:25,568 [WARNING] arxiv_scraper: Failed to save paper 2603.09043: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:25,569 [WARNING] arxiv_scraper: Failed to save paper 2603.09049: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:25,576 [WARNING] arxiv_scraper: Failed to save paper 2603.09052: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:25,579 [WARNING] arxiv_scraper: Failed to save paper 2603.09127: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:25,581 [WARNING] arxiv_scraper: Failed to save paper 2603.09151: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:25,582 [WARNING] arxiv_scraper: Failed to save paper 2603.09152: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:25,583 [WARNING] arxiv_scraper: Failed to save paper 2603.09157: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:25,585 [WARNING] arxiv_scraper: Failed to save paper 2603.09192: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:25,589 [WARNING] arxiv_scraper: Failed to save paper 2603.09200: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:25,591 [WARNING] arxiv_scraper: Failed to save paper 2603.09203: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:25,592 [WARNING] arxiv_scraper: Failed to save paper 2603.09209: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:29,016 [INFO] arxiv_scraper: Fetched 20 papers for cs.LG
+2026-03-11 12:19:29,017 [WARNING] arxiv_scraper: Failed to save paper 2603.08717: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:29,019 [WARNING] arxiv_scraper: Failed to save paper 2603.08754: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:29,021 [WARNING] arxiv_scraper: Failed to save paper 2603.08758: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:29,023 [WARNING] arxiv_scraper: Failed to save paper 2603.08763: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:29,024 [WARNING] arxiv_scraper: Failed to save paper 2603.08773: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:29,026 [WARNING] arxiv_scraper: Failed to save paper 2603.08803: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:29,027 [WARNING] arxiv_scraper: Failed to save paper 2603.08824: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:29,028 [WARNING] arxiv_scraper: Failed to save paper 2603.08825: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:29,031 [WARNING] arxiv_scraper: Failed to save paper 2603.08859: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:29,032 [WARNING] arxiv_scraper: Failed to save paper 2603.08900: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:29,035 [WARNING] arxiv_scraper: Failed to save paper 2603.08907: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:29,040 [WARNING] arxiv_scraper: Failed to save paper 2603.08913: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:29,043 [WARNING] arxiv_scraper: Failed to save paper 2603.08914: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:29,046 [WARNING] arxiv_scraper: Failed to save paper 2603.08960: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:29,047 [WARNING] arxiv_scraper: Failed to save paper 2603.08965: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:29,049 [WARNING] arxiv_scraper: Failed to save paper 2603.08972: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:29,052 [WARNING] arxiv_scraper: Failed to save paper 2603.08987: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:29,055 [WARNING] arxiv_scraper: Failed to save paper 2603.09014: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:29,057 [WARNING] arxiv_scraper: Failed to save paper 2603.09016: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:29,062 [WARNING] arxiv_scraper: Failed to save paper 2603.09024: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:32,249 [INFO] arxiv_scraper: Fetched 20 papers for cs.CL
+2026-03-11 12:19:32,250 [WARNING] arxiv_scraper: Failed to save paper 2603.08869: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:32,252 [WARNING] arxiv_scraper: Failed to save paper 2603.08879: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:32,254 [WARNING] arxiv_scraper: Failed to save paper 2603.08899: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:32,255 [WARNING] arxiv_scraper: Failed to save paper 2603.08910: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:32,255 [WARNING] arxiv_scraper: Failed to save paper 2603.08989: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:32,256 [WARNING] arxiv_scraper: Failed to save paper 2603.08999: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:32,257 [WARNING] arxiv_scraper: Failed to save paper 2603.09095: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:32,259 [WARNING] arxiv_scraper: Failed to save paper 2603.09154: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:32,260 [WARNING] arxiv_scraper: Failed to save paper 2603.09180: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:32,261 [WARNING] arxiv_scraper: Failed to save paper 2603.09185: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:32,261 [WARNING] arxiv_scraper: Failed to save paper 2603.09205: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:32,262 [WARNING] arxiv_scraper: Failed to save paper 2603.09215: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:32,263 [WARNING] arxiv_scraper: Failed to save paper 2603.09222: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:32,264 [WARNING] arxiv_scraper: Failed to save paper 2603.09341: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:32,265 [WARNING] arxiv_scraper: Failed to save paper 2603.09373: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:32,266 [WARNING] arxiv_scraper: Failed to save paper 2603.09400: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:32,266 [WARNING] arxiv_scraper: Failed to save paper 2603.09403: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:32,267 [WARNING] arxiv_scraper: Failed to save paper 2603.09416: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:32,273 [WARNING] arxiv_scraper: Failed to save paper 2603.09434: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:32,275 [WARNING] arxiv_scraper: Failed to save paper 2603.09503: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:35,632 [INFO] arxiv_scraper: Fetched 20 papers for cs.CV
+2026-03-11 12:19:35,633 [WARNING] arxiv_scraper: Failed to save paper 2603.08800: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:35,636 [WARNING] arxiv_scraper: Failed to save paper 2603.08809: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:35,637 [WARNING] arxiv_scraper: Failed to save paper 2603.08812: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:35,638 [WARNING] arxiv_scraper: Failed to save paper 2603.08827: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:35,639 [WARNING] arxiv_scraper: Failed to save paper 2603.08844: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:35,640 [WARNING] arxiv_scraper: Failed to save paper 2603.08850: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:35,641 [WARNING] arxiv_scraper: Failed to save paper 2603.08897: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:35,642 [WARNING] arxiv_scraper: Failed to save paper 2603.08898: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:35,643 [WARNING] arxiv_scraper: Failed to save paper 2603.08906: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:35,644 [WARNING] arxiv_scraper: Failed to save paper 2603.08921: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:35,645 [WARNING] arxiv_scraper: Failed to save paper 2603.08927: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:35,646 [WARNING] arxiv_scraper: Failed to save paper 2603.08928: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:35,647 [WARNING] arxiv_scraper: Failed to save paper 2603.08930: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:35,648 [WARNING] arxiv_scraper: Failed to save paper 2603.08935: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:35,649 [WARNING] arxiv_scraper: Failed to save paper 2603.08942: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:35,651 [WARNING] arxiv_scraper: Failed to save paper 2603.08967: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:35,653 [WARNING] arxiv_scraper: Failed to save paper 2603.08982: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:35,654 [WARNING] arxiv_scraper: Failed to save paper 2603.08997: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:35,655 [WARNING] arxiv_scraper: Failed to save paper 2603.08998: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:35,655 [WARNING] arxiv_scraper: Failed to save paper 2603.09037: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:38,838 [INFO] arxiv_scraper: Fetched 20 papers for cs.RO
+2026-03-11 12:19:38,840 [WARNING] arxiv_scraper: Failed to save paper 2603.08810: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:38,841 [WARNING] arxiv_scraper: Failed to save paper 2603.08814: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:38,842 [WARNING] arxiv_scraper: Failed to save paper 2603.08817: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:38,843 [WARNING] arxiv_scraper: Failed to save paper 2603.08821: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:38,843 [WARNING] arxiv_scraper: Failed to save paper 2603.08831: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:38,844 [WARNING] arxiv_scraper: Failed to save paper 2603.08860: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:38,845 [WARNING] arxiv_scraper: Failed to save paper 2603.08862: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:38,846 [WARNING] arxiv_scraper: Failed to save paper 2603.08863: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:38,848 [WARNING] arxiv_scraper: Failed to save paper 2603.08905: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:38,850 [WARNING] arxiv_scraper: Failed to save paper 2603.08926: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:38,852 [WARNING] arxiv_scraper: Failed to save paper 2603.08958: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:38,854 [WARNING] arxiv_scraper: Failed to save paper 2603.08961: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:38,855 [WARNING] arxiv_scraper: Failed to save paper 2603.08983: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:38,856 [WARNING] arxiv_scraper: Failed to save paper 2603.08988: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:38,857 [WARNING] arxiv_scraper: Failed to save paper 2603.09011: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:38,858 [WARNING] arxiv_scraper: Failed to save paper 2603.09030: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:38,859 [WARNING] arxiv_scraper: Failed to save paper 2603.09031: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:38,860 [WARNING] arxiv_scraper: Failed to save paper 2603.09047: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:38,860 [WARNING] arxiv_scraper: Failed to save paper 2603.09051: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:38,862 [WARNING] arxiv_scraper: Failed to save paper 2603.09056: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:41,946 [INFO] arxiv_scraper: Fetched 20 papers for stat.ML
+2026-03-11 12:19:41,947 [WARNING] arxiv_scraper: Failed to save paper 2603.08753: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:41,948 [WARNING] arxiv_scraper: Failed to save paper 2603.08761: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:41,950 [WARNING] arxiv_scraper: Failed to save paper 2603.08771: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:41,951 [WARNING] arxiv_scraper: Failed to save paper 2603.08947: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:41,952 [WARNING] arxiv_scraper: Failed to save paper 2603.09009: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:41,953 [WARNING] arxiv_scraper: Failed to save paper 2603.09067: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:41,954 [WARNING] arxiv_scraper: Failed to save paper 2603.09251: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:41,954 [WARNING] arxiv_scraper: Failed to save paper 2603.09276: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:41,955 [WARNING] arxiv_scraper: Failed to save paper 2603.09532: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:41,956 [WARNING] arxiv_scraper: Failed to save paper 2603.09564: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:41,958 [WARNING] arxiv_scraper: Failed to save paper 2603.08742: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:41,959 [WARNING] arxiv_scraper: Failed to save paper 2603.08773: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:41,961 [WARNING] arxiv_scraper: Failed to save paper 2603.08803: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:41,962 [WARNING] arxiv_scraper: Failed to save paper 2603.08907: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:41,963 [WARNING] arxiv_scraper: Failed to save paper 2603.08925: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:41,963 [WARNING] arxiv_scraper: Failed to save paper 2603.08945: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:41,964 [WARNING] arxiv_scraper: Failed to save paper 2603.08963: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:41,966 [WARNING] arxiv_scraper: Failed to save paper 2603.08979: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:41,972 [WARNING] arxiv_scraper: Failed to save paper 2603.09168: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:41,973 [WARNING] arxiv_scraper: Failed to save paper 2603.09257: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:44,975 [ERROR] arxiv_scraper: arXiv scraper failed: relation "scraping_jobs" does not exist
+LINE 2:                     INSERT INTO scraping_jobs ("jobName", st...
+                                        ^
+
+2026-03-11 12:19:44,975 [INFO] orchestrator: ✅ arXiv scraper complete: 0 papers processed
+2026-03-11 12:19:44,976 [INFO] orchestrator: ▶ Starting GitHub scraper...
+2026-03-11 12:19:45,255 [ERROR] github_scraper: Failed to fetch topic artificial-intelligence: 401 Client Error: Unauthorized for url: https://api.github.com/search/repositories?q=topic%3Aartificial-intelligence%20stars%3A%3E100%20created%3A%3E2025-03-11&sort=stars&order=desc&per_page=30
+2026-03-11 12:19:45,505 [ERROR] github_scraper: Failed to fetch topic machine-learning: 401 Client Error: Unauthorized for url: https://api.github.com/search/repositories?q=topic%3Amachine-learning%20stars%3A%3E100%20created%3A%3E2025-03-11&sort=stars&order=desc&per_page=30
+2026-03-11 12:19:45,753 [ERROR] github_scraper: Failed to fetch topic deep-learning: 401 Client Error: Unauthorized for url: https://api.github.com/search/repositories?q=topic%3Adeep-learning%20stars%3A%3E100%20created%3A%3E2025-03-11&sort=stars&order=desc&per_page=30
+2026-03-11 12:19:46,002 [ERROR] github_scraper: Failed to fetch topic llm: 401 Client Error: Unauthorized for url: https://api.github.com/search/repositories?q=topic%3Allm%20stars%3A%3E100%20created%3A%3E2025-03-11&sort=stars&order=desc&per_page=30
+2026-03-11 12:19:46,649 [ERROR] github_scraper: Failed to fetch topic large-language-model: 401 Client Error: Unauthorized for url: https://api.github.com/search/repositories?q=topic%3Alarge-language-model%20stars%3A%3E100%20created%3A%3E2025-03-11&sort=stars&order=desc&per_page=30
+2026-03-11 12:19:46,908 [ERROR] github_scraper: Failed to fetch topic transformer: 401 Client Error: Unauthorized for url: https://api.github.com/search/repositories?q=topic%3Atransformer%20stars%3A%3E100%20created%3A%3E2025-03-11&sort=stars&order=desc&per_page=30
+2026-03-11 12:19:47,212 [ERROR] github_scraper: Failed to fetch topic neural-network: 401 Client Error: Unauthorized for url: https://api.github.com/search/repositories?q=topic%3Aneural-network%20stars%3A%3E100%20created%3A%3E2025-03-11&sort=stars&order=desc&per_page=30
+2026-03-11 12:19:47,478 [ERROR] github_scraper: Failed to fetch topic generative-ai: 401 Client Error: Unauthorized for url: https://api.github.com/search/repositories?q=topic%3Agenerative-ai%20stars%3A%3E100%20created%3A%3E2025-03-11&sort=stars&order=desc&per_page=30
+2026-03-11 12:19:47,738 [ERROR] github_scraper: Failed to fetch topic diffusion: 401 Client Error: Unauthorized for url: https://api.github.com/search/repositories?q=topic%3Adiffusion%20stars%3A%3E100%20created%3A%3E2025-03-11&sort=stars&order=desc&per_page=30
+2026-03-11 12:19:47,974 [ERROR] github_scraper: Failed to fetch topic computer-vision: 401 Client Error: Unauthorized for url: https://api.github.com/search/repositories?q=topic%3Acomputer-vision%20stars%3A%3E100%20created%3A%3E2025-03-11&sort=stars&order=desc&per_page=30
+2026-03-11 12:19:48,221 [ERROR] github_scraper: Failed to fetch topic nlp: 401 Client Error: Unauthorized for url: https://api.github.com/search/repositories?q=topic%3Anlp%20stars%3A%3E100%20created%3A%3E2025-03-11&sort=stars&order=desc&per_page=30
+2026-03-11 12:19:48,222 [INFO] github_scraper: Found 0 unique repos across 11 topics
+2026-03-11 12:19:48,224 [ERROR] github_scraper: GitHub scraper transaction failed: relation "scraping_jobs" does not exist
+LINE 2:                     INSERT INTO scraping_jobs ("jobName", st...
+                                        ^
+
+2026-03-11 12:19:48,225 [ERROR] orchestrator: ❌ GitHub scraper failed: relation "scraping_jobs" does not exist
+LINE 2:                     INSERT INTO scraping_jobs ("jobName", st...
+                                        ^
+Traceback (most recent call last):
+  File "/app/scrapers/github_scraper.py", line 115, in run
+    cur.execute("""
+psycopg2.errors.UndefinedTable: relation "scraping_jobs" does not exist
+LINE 2:                     INSERT INTO scraping_jobs ("jobName", st...
+                                        ^
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/pipeline/orchestrator.py", line 39, in run_github_scraper
+    count = scraper.run()
+            ^^^^^^^^^^^^^
+  File "/app/scrapers/github_scraper.py", line 125, in run
+    cur.execute("""
+psycopg2.errors.UndefinedTable: relation "scraping_jobs" does not exist
+LINE 2:                     INSERT INTO scraping_jobs ("jobName", st...
+                                        ^
+
+2026-03-11 12:19:48,239 [INFO] orchestrator: ▶ Starting news scraper...
+2026-03-11 12:19:48,303 [INFO] news_scraper: Fetched 15 articles from TechCrunch
+2026-03-11 12:19:48,304 [WARNING] news_scraper: Failed to save article: relation "ai_news" does not exist
+LINE 2:                 INSERT INTO ai_news (title, summary, url, so...
+                                    ^
+
+2026-03-11 12:19:48,305 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:48,306 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:48,306 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:48,307 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:48,308 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:48,308 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:48,309 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:48,310 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:48,310 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:48,311 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:48,311 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:48,312 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:48,313 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:48,313 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:48,407 [INFO] news_scraper: Fetched 0 articles from VentureBeat
+2026-03-11 12:19:49,388 [INFO] news_scraper: Fetched 10 articles from The Decoder
+2026-03-11 12:19:49,389 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:49,390 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:49,391 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:49,392 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:49,392 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:49,393 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:49,394 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:49,395 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:49,395 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:49,396 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:50,452 [INFO] news_scraper: Fetched 12 articles from AI News
+2026-03-11 12:19:50,453 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:50,454 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:50,454 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:50,455 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:50,456 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:50,457 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:50,457 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:50,458 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:50,459 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:50,459 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:50,460 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:50,460 [WARNING] news_scraper: Failed to save article: current transaction is aborted, commands ignored until end of transaction block
+
+2026-03-11 12:19:50,462 [ERROR] news_scraper: News scraper failed: relation "scraping_jobs" does not exist
+LINE 2:                     INSERT INTO scraping_jobs ("jobName", st...
+                                        ^
+
+2026-03-11 12:19:50,462 [INFO] orchestrator: ✅ News scraper complete: 0 articles processed
+2026-03-11 12:19:50,469 [INFO] orchestrator: ⏰ Schedules set. Running...
