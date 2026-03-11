@@ -7,6 +7,7 @@ import { TrendingRepos } from "@/components/dashboard/trending-repos";
 import { FundingNews } from "@/components/dashboard/funding-news";
 import { NewsFeed } from "@/components/dashboard/news-feed";
 import { CategoryChart } from "@/components/dashboard/category-chart";
+import { DashboardTabs } from "@/components/dashboard/dashboard-tabs";
 import { Activity, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -55,32 +56,15 @@ export default async function DashboardPage() {
         </div>
       </div>
 
-      {/* Stats Bar */}
-      <StatsBar stats={overview?.stats} />
-
-      {/* Main Grid */}
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-        {/* Left — Trending Tools */}
-        <div className="xl:col-span-2">
-          <TrendingTools tools={overview?.trendingTools || []} />
-        </div>
-        {/* Right — News Feed */}
-        <div>
-          <NewsFeed news={news} />
-        </div>
-      </div>
-
-      {/* Second Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <LatestPapers papers={latestPapers} />
-        <TrendingRepos repos={trendingRepos} />
-      </div>
-
-      {/* Third Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <FundingNews startups={fundingNews} />
-        <CategoryChart />
-      </div>
+      <DashboardTabs 
+        overviewStats={<StatsBar stats={overview?.stats} />}
+        trendingTools={<TrendingTools tools={overview?.trendingTools || []} />}
+        newsFeed={<NewsFeed news={news} />}
+        latestPapers={<LatestPapers papers={latestPapers} />}
+        trendingRepos={<TrendingRepos repos={trendingRepos} />}
+        fundingNews={<FundingNews startups={fundingNews} />}
+        categoryChart={<CategoryChart />}
+      />
     </div>
   );
 }

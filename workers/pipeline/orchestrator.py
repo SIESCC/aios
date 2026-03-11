@@ -29,6 +29,8 @@ from scrapers.arxiv_scraper import ArXivScraper
 from scrapers.tools_scraper import ToolsScraper
 from scrapers.news_scraper import NewsScraper
 from scrapers.models_scraper import ModelsScraper
+from scrapers.startups_scraper import StartupsScraper
+from scrapers.prompts_scraper import PromptsScraper
 from ai_processor.summarizer import AISummarizer
 
 
@@ -87,6 +89,28 @@ def run_models_scraper():
         logger.error(f"❌ Models scraper failed: {e}", exc_info=True)
 
 
+def run_startups_scraper():
+    """Fetch AI startup funding news"""
+    logger.info("▶ Starting startups scraper...")
+    try:
+        scraper = StartupsScraper()
+        count = scraper.run()
+        logger.info(f"✅ Startups scraper complete: {count} startups processed")
+    except Exception as e:
+        logger.error(f"❌ Startups scraper failed: {e}", exc_info=True)
+
+
+def run_prompts_scraper():
+    """Fetch new AI prompts"""
+    logger.info("▶ Starting prompts scraper...")
+    try:
+        scraper = PromptsScraper()
+        count = scraper.run()
+        logger.info(f"✅ Prompts scraper complete: {count} prompts processed")
+    except Exception as e:
+        logger.error(f"❌ Prompts scraper failed: {e}", exc_info=True)
+
+
 def run_summarizer():
     """Generate AI summaries for queued items"""
     logger.info("▶ Starting AI summarizer...")
@@ -107,6 +131,8 @@ def main():
     run_news_scraper()
     run_tools_scraper()
     run_models_scraper()
+    run_startups_scraper()
+    run_prompts_scraper()
 
     # Schedule recurring runs
     schedule.every(6).hours.do(run_github_scraper)
@@ -114,6 +140,8 @@ def main():
     schedule.every(3).hours.do(run_news_scraper)
     schedule.every(24).hours.do(run_tools_scraper)
     schedule.every(12).hours.do(run_models_scraper)
+    schedule.every(12).hours.do(run_startups_scraper)
+    schedule.every(24).hours.do(run_prompts_scraper)
     schedule.every(2).hours.do(run_summarizer)
 
     logger.info("⏰ Schedules set. Running...")

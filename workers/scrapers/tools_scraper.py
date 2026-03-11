@@ -39,62 +39,104 @@ class ToolsScraper:
         )
 
     def run(self) -> int:
-        logger.info("▶ Starting tools scraper via RSS...")
+        import requests # pyre-ignore[21]
+        logger.info("▶ Starting tools scraper via RSS & APIs...")
         conn = self.get_db_connection()
         conn.autocommit = False
         saved = 0
+        total_found = 0
+
+        # Feed sources
+        feeds = [
+            "https://hnrss.org/show?q=AI",
+            "https://www.producthunt.com/feed"
+        ]
 
         try:
-            feed = feedparser.parse(self.feed_url)
-            total_found = len(feed.entries)
-            
-            for entry in feed.get("entries", []):
-                title = str(entry.get("title", ""))
-                link = str(entry.get("link", ""))
-                description = str(entry.get("description", ""))
-                
-                # Clean up "Show HN: " prefix
-                if title.startswith("Show HN: "):
-                    title = title[9:]  # pyre-ignore[16]
-                
-                # Basic generation of slug, category, pricing
-                slug = re.sub(r'[^a-zA-Z0-9]', '-', title).strip('-').lower()
-                slug = slug[:50]  # pyre-ignore[16]
-                category = "Productivity"
-                if "video" in title.lower() or "video" in description.lower():
-                    category = "Video"
-                elif "audio" in title.lower() or "speech" in description.lower():
-                    category = "Audio"
-                elif "code" in title.lower() or "dev" in description.lower():
-                    category = "Code Assistants"
-                elif "writing" in title.lower() or "text" in description.lower():
-                    category = "Writing"
+            # 1. Scrape RSS feeds (HN and PH)
+            for feed_url in feeds:
+                feed = feedparser.parse(feed_url)
+                for entry in feed.get("entries", []):
+                    title = str(entry.get("title", ""))
+                    link = str(entry.get("link", ""))
+                    description = str(entry.get("description", ""))
+                    
+                    if "Show HN: " in title:
+                        title = title.replace("Show HN: ", "")
+                    # Filter for AI
+                    if "ai" not in title.lower() and "ai" not in description.lower() and "gpt" not in description.lower():
+                        continue
+                        
+                    slug = re.sub(r'[^a-zA-Z0-9]', '-', title).strip('-').lower()[:50] # pyre-ignore[16]
+                    category = "Productivity"
+                    if "video" in title.lower() or "video" in description.lower():
+                        category = "Video"
+                    elif "audio" in title.lower() or "speech" in description.lower():
+                        category = "Audio"
+                    elif "code" in title.lower() or "dev" in description.lower():
+                        category = "Code Assistants"
+                    else:
+                        category = "Productivity"
 
-                pricing = "Freemium" # Assume freemium as default for Show HN
-                
-                with conn.cursor() as cur:
-                    cur.execute("""
-                        INSERT INTO ai_tools (
-                            id, slug, name, tagline, description, website, category, 
-                            pricing, status, "trendingScore", tags, "updatedAt"
-                        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, 'APPROVED', %s, %s, NOW())
-                        ON CONFLICT (slug) DO UPDATE SET
-                            "trendingScore" = EXCLUDED."trendingScore",
-                            "updatedAt" = NOW()
-                    """, (
-                        uuid.uuid4().hex,
-                        slug,
-                        title[:100],  # pyre-ignore[16]
-                        title[:200], # pyre-ignore[16] tagline as title initially
-                        description[:1000] if description else "AI Tool discovered via HN",  # pyre-ignore[16]
-                        link[:255] if link else "https://news.ycombinator.com",  # pyre-ignore[16]
-                        category,
-                        pricing,
-                        55.0, # Baseline score
-                        ['ai', 'startup']
-                    ))
-                saved += 1
-                
+                    pricing = "Freemium"
+                    score = 60.0
+                    
+                    with conn.cursor() as cur:
+                        cur.execute("""
+                            INSERT INTO ai_tools (
+                                id, slug, name, tagline, description, website, category, 
+                                pricing, status, "trendingScore", tags, "updatedAt"
+                            ) VALUES (%s, %s, %s, %s, %s, %s, %s, 'APPROVED', %s, %s, NOW())
+                            ON CONFLICT (slug) DO UPDATE SET
+                                "trendingScore" = EXCLUDED."trendingScore",
+                                "updatedAt" = NOW()
+                        """, (
+                            uuid.uuid4().hex, slug, title[:100], # pyre-ignore[16]
+                            title[:200], description[:1000] if description else "AI Tool", # pyre-ignore[16]
+                            link[:255] if link else "https://news.ycombinator.com", # pyre-ignore[16]
+                            category, pricing, score, ['ai', 'tool']
+                        ))
+                    saved += 1
+                    total_found += 1
+
+            # 2. Scrape GitHub API
+            gh_url = "https://api.github.com/search/repositories?q=topic:ai-tool&sort=stars&order=desc&per_page=15"
+            try:
+                headers = {"User-Agent": "AIOS-Scraper"}
+                if os.getenv("GITHUB_TOKEN"):
+                    headers["Authorization"] = f"token {os.getenv('GITHUB_TOKEN')}"
+                resp = requests.get(gh_url, headers=headers)
+                if resp.status_code == 200:
+                    repos = resp.json().get("items", [])
+                    for repo in repos:
+                        title = str(repo.get("name", ""))
+                        desc = str(repo.get("description", "") or "")
+                        stars = int(repo.get("stargazers_count", 0))
+                        link = str(repo.get("html_url", ""))
+                        
+                        slug = f"gh-{title.lower()}"[:50] # pyre-ignore[16]
+                        score = min(99.0, 50.0 + (float(stars) / 1000.0))
+                        
+                        with conn.cursor() as cur:
+                            cur.execute("""
+                                INSERT INTO ai_tools (
+                                    id, slug, name, tagline, description, website, category, 
+                                    pricing, status, "trendingScore", tags, "updatedAt"
+                                ) VALUES (%s, %s, %s, %s, %s, %s, %s, 'APPROVED', %s, %s, NOW())
+                                ON CONFLICT (slug) DO UPDATE SET
+                                    "trendingScore" = EXCLUDED."trendingScore",
+                                    "updatedAt" = NOW()
+                            """, (
+                                uuid.uuid4().hex, slug, title[:100], # pyre-ignore[16]
+                                desc[:200] if desc else title[:200], # pyre-ignore[16]
+                                desc[:1000], link[:255], # pyre-ignore[16]
+                                "Code Tools", "Free/Open Source", score, ['github', 'open-source', 'ai']
+                            ))
+                        saved += 1
+                        total_found += 1
+            except Exception as github_e:
+                logger.error(f"GitHub API error in tools scraper: {github_e}")
+
             with conn.cursor() as cur:
                 cur.execute("""
                     INSERT INTO scraping_jobs (id, "jobName", status, "itemsFound", "itemsSaved", "completedAt")
