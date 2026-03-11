@@ -5,8 +5,8 @@ Scrapes public AI tool directories/feeds for new tools
 """
 import os
 import logging
-import feedparser
-import psycopg2
+import feedparser  # pyre-ignore[21]
+import psycopg2    # pyre-ignore[21]
 import uuid
 import re
 from datetime import datetime

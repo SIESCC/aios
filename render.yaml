@@ -24,8 +24,7 @@ services:
         value: production
       - key: NODE_VERSION
         value: "20.10.0"
-      - key: PORT
-        value: "4000"
+
       - key: DATABASE_URL
         fromDatabase:
           name: aios-db
@@ -60,4 +59,4 @@ services:
           name: aios-redis
           property: connectionString
       - key: BACKEND_API_URL
-        value: "https://aios-backend.onrender.com/api"
+        value: "https://aios-backend-0vpb.onrender.com/api"
