@@ -17,7 +17,7 @@ services:
     rootDir: backend
     plan: free
     buildCommand: npm install
-    startCommand: npx prisma generate && npx prisma db push && node dist/index.js
+    startCommand: npx prisma generate && npx prisma db push && node dist/seed.js && node dist/index.js
     envVars:
       - key: NODE_ENV
         value: production
