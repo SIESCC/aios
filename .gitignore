@@ -7,7 +7,6 @@ yarn-error.log
 
 # Build and Dist
 build/
-dist/
 .next/
 out/
 
