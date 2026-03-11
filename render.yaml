@@ -16,7 +16,7 @@ services:
     env: node
     rootDir: backend
     plan: free
-    buildCommand: npm install --legacy-peer-deps && npx prisma generate && npm run build
+    buildCommand: npm install --legacy-peer-deps; npm run render-build
     # We run database push (schema init) during start because Render doesn't provide DB connection during build phase
     startCommand: npx prisma db push && node dist/index.js
     envVars:
