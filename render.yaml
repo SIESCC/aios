@@ -40,13 +40,13 @@ services:
       - key: JWT_REFRESH_SECRET
         generateValue: true
 
-  - type: worker
+  - type: web
     name: aios-workers
     env: python
     rootDir: workers
     plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: python -m pipeline.orchestrator
+    startCommand: python dummy_server.py & python -m pipeline.orchestrator
     envVars:
       - key: PYTHON_VERSION
         value: "3.11.2"
