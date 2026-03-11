@@ -135,14 +135,14 @@ def main():
     run_prompts_scraper()
 
     # Schedule recurring runs
-    schedule.every(6).hours.do(run_github_scraper)
-    schedule.every(12).hours.do(run_arxiv_scraper)
+    schedule.every(3).hours.do(run_github_scraper)
+    schedule.every(3).hours.do(run_arxiv_scraper)
     schedule.every(3).hours.do(run_news_scraper)
-    schedule.every(24).hours.do(run_tools_scraper)
-    schedule.every(12).hours.do(run_models_scraper)
-    schedule.every(12).hours.do(run_startups_scraper)
-    schedule.every(24).hours.do(run_prompts_scraper)
-    schedule.every(2).hours.do(run_summarizer)
+    schedule.every(3).hours.do(run_tools_scraper)
+    schedule.every(3).hours.do(run_models_scraper)
+    schedule.every(3).hours.do(run_startups_scraper)
+    schedule.every(3).hours.do(run_prompts_scraper)
+    schedule.every(3).hours.do(run_summarizer)
 
     logger.info("⏰ Schedules set. Running...")
 
