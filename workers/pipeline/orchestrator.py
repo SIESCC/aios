@@ -5,9 +5,9 @@ Schedules and runs all automation workers
 
 import os
 import time
-import schedule
+import schedule  # pyre-ignore[21]
 import logging
-from dotenv import load_dotenv
+from dotenv import load_dotenv  # pyre-ignore[21]
 
 load_dotenv()
 
@@ -24,14 +24,14 @@ logging.basicConfig(
 logger = logging.getLogger("orchestrator")
 
 # Import scrapers
-from scrapers.github_scraper import GitHubScraper
-from scrapers.arxiv_scraper import ArXivScraper
-from scrapers.tools_scraper import ToolsScraper
-from scrapers.news_scraper import NewsScraper
-from scrapers.models_scraper import ModelsScraper
-from scrapers.startups_scraper import StartupsScraper
-from scrapers.prompts_scraper import PromptsScraper
-from ai_processor.summarizer import AISummarizer
+from scrapers.github_scraper import GitHubScraper  # pyre-ignore[21]
+from scrapers.arxiv_scraper import ArXivScraper  # pyre-ignore[21]
+from scrapers.tools_scraper import ToolsScraper  # pyre-ignore[21]
+from scrapers.news_scraper import NewsScraper  # pyre-ignore[21]
+from scrapers.models_scraper import ModelsScraper  # pyre-ignore[21]
+from scrapers.startups_scraper import StartupsScraper  # pyre-ignore[21]
+from scrapers.prompts_scraper import PromptsScraper  # pyre-ignore[21]
+from ai_processor.summarizer import AISummarizer  # pyre-ignore[21]
 
 
 def run_github_scraper():
