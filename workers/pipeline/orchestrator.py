@@ -129,13 +129,15 @@ def main():
     run_seed()
 
     # Run immediately on startup
+    logger.info("▶ Executing initial run of all scrapers...")
     run_arxiv_scraper()
+    run_tools_scraper()
     run_github_scraper()
     run_news_scraper()
-    run_tools_scraper()
     run_models_scraper()
     run_startups_scraper()
     run_prompts_scraper()
+    run_summarizer()
 
     # Schedule recurring runs
     schedule.every(3).hours.do(run_github_scraper)
