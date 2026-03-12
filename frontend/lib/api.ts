@@ -99,8 +99,42 @@ export const api = {
     overview: () => apiFetch("/trends/overview"),
     categories: () => apiFetch("/trends/categories"),
     news: (limit?: number) => apiFetch(`/trends/news?limit=${limit || 10}`),
+    growthAnalytics: () => apiFetch("/trends/growth-analytics"),
+    industryDashboard: () => apiFetch("/trends/industry-dashboard"),
+    history: (entityType?: string, days?: number) =>
+      apiFetch(`/trends/history?entityType=${entityType || 'tool'}&days=${days || 30}`),
   },
   // Search
   search: (query: string, type?: string) =>
     apiFetch(`/search?q=${encodeURIComponent(query)}${type ? `&type=${type}` : ""}`),
+  // Recommend (new)
+  recommend: (query: string, limit?: number) =>
+    apiFetch(`/recommend?q=${encodeURIComponent(query)}&limit=${limit || 10}`),
+  // Workflows (new)
+  workflows: {
+    list: (params?: Record<string, string>) =>
+      apiFetch(`/workflows?${new URLSearchParams(params).toString()}`),
+    featured: () => apiFetch("/workflows/featured"),
+    categories: () => apiFetch("/workflows/categories"),
+    get: (slug: string) => apiFetch(`/workflows/${slug}`),
+    create: (data: any) => apiFetch("/workflows", { method: "POST", body: JSON.stringify(data) }),
+  },
+  // Ecosystem (new)
+  ecosystem: {
+    graph: () => apiFetch("/ecosystem/graph"),
+    stats: () => apiFetch("/ecosystem/stats"),
+  },
+  // Community (new)
+  community: {
+    list: (params?: Record<string, string>) =>
+      apiFetch(`/community?${new URLSearchParams(params).toString()}`),
+    stats: () => apiFetch("/community/stats"),
+    submit: (data: any) => apiFetch("/community", { method: "POST", body: JSON.stringify(data) }),
+  },
+  // Discovery (new)
+  discovery: {
+    queue: (params?: Record<string, string>) =>
+      apiFetch(`/discovery/queue?${new URLSearchParams(params).toString()}`),
+    stats: () => apiFetch("/discovery/stats"),
+  },
 };

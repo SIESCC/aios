@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
-// Assuming we pass in the rendered ReactNode for each component
 export function DashboardTabs({
   overviewStats,
   trendingTools,
@@ -12,6 +11,7 @@ export function DashboardTabs({
   trendingRepos,
   fundingNews,
   categoryChart,
+  industryMetrics,
 }: {
   overviewStats: React.ReactNode;
   trendingTools: React.ReactNode;
@@ -20,6 +20,7 @@ export function DashboardTabs({
   trendingRepos: React.ReactNode;
   fundingNews: React.ReactNode;
   categoryChart: React.ReactNode;
+  industryMetrics?: React.ReactNode;
 }) {
   const [activeTab, setActiveTab] = useState("overview");
 
@@ -28,6 +29,7 @@ export function DashboardTabs({
     { id: "tools", label: "Tools & Repos" },
     { id: "research", label: "Research & News" },
     { id: "startups", label: "Startups & Funding" },
+    { id: "industry", label: "Industry Dashboard" },
   ];
 
   return (
@@ -85,6 +87,12 @@ export function DashboardTabs({
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {fundingNews}
             </div>
+          </div>
+        )}
+
+        {activeTab === "industry" && (
+          <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            {industryMetrics}
           </div>
         )}
       </div>

@@ -249,6 +249,126 @@ async function main() {
   }
   console.log(`✅ ${prompts.length} prompts seeded`);
 
+  // ── Workflows ──────────────────────────────────────────
+  const workflows = [
+    {
+      title: 'Content Creation Pipeline',
+      slug: 'content-creation-pipeline',
+      description: 'Full content creation from idea to published video',
+      category: 'Content Creation',
+      featured: true,
+      steps: {
+        create: [
+          { stepOrder: 1, toolName: 'ChatGPT', toolSlug: 'chatgpt', action: 'Idea Generation', description: 'Generate content ideas and outlines' },
+          { stepOrder: 2, toolName: 'Claude', toolSlug: 'claude', action: 'Script Writing', description: 'Write detailed scripts' },
+          { stepOrder: 3, toolName: 'ElevenLabs', action: 'Voice Generation', description: 'Generate voiceovers' },
+          { stepOrder: 4, toolName: 'Runway', action: 'Video Creation', description: 'Create video content' },
+        ],
+      },
+    },
+    {
+      title: 'Coding Assistant Pipeline',
+      slug: 'coding-assistant-pipeline',
+      description: 'Accelerated development with AI tools',
+      category: 'Coding',
+      featured: true,
+      steps: {
+        create: [
+          { stepOrder: 1, toolName: 'ChatGPT', toolSlug: 'chatgpt', action: 'Architecture Design', description: 'Plan system architecture' },
+          { stepOrder: 2, toolName: 'Cursor', toolSlug: 'cursor', action: 'Code Implementation', description: 'Write code with AI assistance' },
+          { stepOrder: 3, toolName: 'GitHub Copilot', toolSlug: 'github-copilot', action: 'Code Completion', description: 'Auto-complete code' },
+          { stepOrder: 4, toolName: 'Claude', toolSlug: 'claude', action: 'Code Review', description: 'Review and optimize' },
+        ],
+      },
+    },
+    {
+      title: 'Marketing Automation',
+      slug: 'marketing-automation',
+      description: 'End-to-end marketing campaign workflow',
+      category: 'Marketing',
+      featured: true,
+      steps: {
+        create: [
+          { stepOrder: 1, toolName: 'ChatGPT', toolSlug: 'chatgpt', action: 'Strategy', description: 'Define campaign goals' },
+          { stepOrder: 2, toolName: 'Midjourney', toolSlug: 'midjourney', action: 'Visual Assets', description: 'Generate marketing visuals' },
+          { stepOrder: 3, toolName: 'Claude', toolSlug: 'claude', action: 'Copywriting', description: 'Write ad copy' },
+        ],
+      },
+    },
+  ];
+
+  for (const wf of workflows) {
+    try {
+      const existing = await prisma.workflow.findUnique({ where: { slug: wf.slug } });
+      if (!existing) {
+        await prisma.workflow.create({ data: wf });
+      }
+    } catch {}
+  }
+  console.log(`✅ ${workflows.length} workflows seeded`);
+
+  // ── Ecosystem Relations ────────────────────────────────
+  const ecosystemRelations = [
+    { sourceType: 'startup', sourceId: '', sourceName: 'Anthropic', targetType: 'tool', targetId: '', targetName: 'Claude', relationshipType: 'owns', strength: 1.0 },
+    { sourceType: 'tool', sourceId: '', sourceName: 'ChatGPT', targetType: 'model', targetId: '', targetName: 'GPT-4o', relationshipType: 'uses', strength: 0.95 },
+    { sourceType: 'tool', sourceId: '', sourceName: 'Claude', targetType: 'model', targetId: '', targetName: 'Claude 3.5 Sonnet', relationshipType: 'uses', strength: 0.95 },
+    { sourceType: 'tool', sourceId: '', sourceName: 'Cursor', targetType: 'tool', targetId: '', targetName: 'ChatGPT', relationshipType: 'integrates', strength: 0.7 },
+    { sourceType: 'tool', sourceId: '', sourceName: 'GitHub Copilot', targetType: 'model', targetId: '', targetName: 'GPT-4o', relationshipType: 'uses', strength: 0.8 },
+  ];
+
+  // Resolve IDs for ecosystem relations
+  for (const rel of ecosystemRelations) {
+    try {
+      let source: any, target: any;
+      if (rel.sourceType === 'startup') source = await prisma.aiStartup.findFirst({ where: { name: rel.sourceName } });
+      if (rel.sourceType === 'tool') source = await prisma.aiTool.findFirst({ where: { name: rel.sourceName } });
+      if (rel.targetType === 'tool') target = await prisma.aiTool.findFirst({ where: { name: rel.targetName } });
+      if (rel.targetType === 'model') target = await prisma.aiModel.findFirst({ where: { name: rel.targetName } });
+      
+      if (source && target) {
+        await prisma.ecosystemRelation.upsert({
+          where: { sourceId_targetId_relationshipType: { sourceId: source.id, targetId: target.id, relationshipType: rel.relationshipType } },
+          update: {},
+          create: { ...rel, sourceId: source.id, targetId: target.id },
+        });
+      }
+    } catch {}
+  }
+  console.log('✅ Ecosystem relations seeded');
+
+  // ── Discovery Queue ────────────────────────────────────
+  const discoveryItems = [
+    { source: 'producthunt', toolName: 'Sora', toolUrl: 'https://sora.com', description: 'OpenAI text-to-video model', category: 'Video', score: 92 },
+    { source: 'github', toolName: 'Ollama', toolUrl: 'https://ollama.ai', description: 'Run large language models locally', category: 'LLM', score: 88 },
+    { source: 'producthunt', toolName: 'Ideogram', toolUrl: 'https://ideogram.ai', description: 'AI art generator with text rendering', category: 'Image Generation', score: 75 },
+    { source: 'newsletter', toolName: 'Replit AI', toolUrl: 'https://replit.com', description: 'AI-powered cloud IDE', category: 'Code Assistants', score: 80 },
+  ];
+
+  for (const item of discoveryItems) {
+    try {
+      await prisma.discoveryQueue.upsert({
+        where: { toolUrl: item.toolUrl },
+        update: {},
+        create: item,
+      });
+    } catch {}
+  }
+  console.log(`✅ ${discoveryItems.length} discovery queue items seeded`);
+
+  // ── Community Submissions ──────────────────────────────
+  const submissions = [
+    { type: 'TOOL_REVIEW' as const, status: 'APPROVED' as const, title: 'ChatGPT is a game changer', content: 'I have been using ChatGPT for 6 months and it has completely transformed my workflow. The GPT-4 model is incredibly capable at coding, writing, and analysis.', authorName: 'Alex Chen' },
+    { type: 'PROMPT' as const, status: 'APPROVED' as const, title: 'SEO Blog Post Generator', content: 'Create a comprehensive SEO-optimized blog post about {TOPIC}. Include: title, meta description, H2 headers, key points, and a call to action. Target keyword: {KEYWORD}. Word count: 1500+.', authorName: 'Sarah K.' },
+    { type: 'COMPARISON' as const, status: 'APPROVED' as const, title: 'Claude vs ChatGPT for Coding', content: 'After extensive testing, Claude 3.5 Sonnet edges out GPT-4o in coding tasks. Claude better understands complex codebases, while ChatGPT excels at quick scripts and boilerplate.', authorName: 'Dev Team' },
+  ];
+
+  for (const sub of submissions) {
+    try {
+      await prisma.communitySubmission.create({ data: sub });
+    } catch {}
+  }
+  console.log(`✅ ${submissions.length} community submissions seeded`);
+
   console.log('\n🎉 Database seeding complete!');
   console.log('Admin login: admin@aios.dev / Admin@123!');
 }
@@ -256,3 +376,4 @@ async function main() {
 main()
   .catch(console.error)
   .finally(() => prisma.$disconnect());
+

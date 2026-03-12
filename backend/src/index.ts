@@ -26,6 +26,11 @@ import promptsRoutes from './routes/prompts';
 import trendsRoutes from './routes/trends';
 import searchRoutes from './routes/search';
 import adminRoutes from './routes/admin';
+import workflowsRoutes from './routes/workflows';
+import communityRoutes from './routes/community';
+import ecosystemRoutes from './routes/ecosystem';
+import recommendRoutes from './routes/recommend';
+import discoveryRoutes from './routes/discovery';
 
 config();
 
@@ -118,6 +123,11 @@ app.use('/api/prompts', promptsRoutes);
 app.use('/api/trends', trendsRoutes);
 app.use('/api/search', searchRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/workflows', workflowsRoutes);
+app.use('/api/community', communityRoutes);
+app.use('/api/ecosystem', ecosystemRoutes);
+app.use('/api/recommend', recommendRoutes);
+app.use('/api/discovery', discoveryRoutes);
 
 // ─────────────────────────────────────────────
 // 404 & Error Handlers

@@ -8,6 +8,8 @@ import { FundingNews } from "@/components/dashboard/funding-news";
 import { NewsFeed } from "@/components/dashboard/news-feed";
 import { CategoryChart } from "@/components/dashboard/category-chart";
 import { DashboardTabs } from "@/components/dashboard/dashboard-tabs";
+import { RecommendSearch } from "@/components/dashboard/recommend-search";
+import { IndustryMetrics } from "@/components/dashboard/industry-metrics";
 import { Activity, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -19,21 +21,22 @@ export const revalidate = 300; // Revalidate every 5 minutes
 
 async function getDashboardData() {
   try {
-    const [overview, latestPapers, trendingRepos, fundingNews, news] = await Promise.all([
+    const [overview, latestPapers, trendingRepos, fundingNews, news, industryDashboard] = await Promise.all([
       api.trends.overview(),
       api.research.latest(),
       api.repos.trending(),
       api.startups.latestFunding(),
       api.trends.news(8),
+      api.trends.industryDashboard().catch(() => null),
     ]);
-    return { overview, latestPapers, trendingRepos, fundingNews, news };
+    return { overview, latestPapers, trendingRepos, fundingNews, news, industryDashboard };
   } catch {
-    return { overview: null, latestPapers: [], trendingRepos: [], fundingNews: [], news: [] };
+    return { overview: null, latestPapers: [], trendingRepos: [], fundingNews: [], news: [], industryDashboard: null };
   }
 }
 
 export default async function DashboardPage() {
-  const { overview, latestPapers, trendingRepos, fundingNews, news } = await getDashboardData();
+  const { overview, latestPapers, trendingRepos, fundingNews, news, industryDashboard } = await getDashboardData();
 
   return (
     <div className="p-6 space-y-6 max-w-[1600px]">
@@ -56,6 +59,9 @@ export default async function DashboardPage() {
         </div>
       </div>
 
+      {/* AI Tool Recommendation Search */}
+      <RecommendSearch />
+
       <DashboardTabs 
         overviewStats={<StatsBar stats={overview?.stats} />}
         trendingTools={<TrendingTools tools={overview?.trendingTools || []} />}
@@ -64,6 +70,7 @@ export default async function DashboardPage() {
         trendingRepos={<TrendingRepos repos={trendingRepos} />}
         fundingNews={<FundingNews startups={fundingNews} />}
         categoryChart={<CategoryChart />}
+        industryMetrics={<IndustryMetrics data={industryDashboard} />}
       />
     </div>
   );

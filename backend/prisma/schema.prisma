@@ -389,3 +389,119 @@ model ScrapingJob {
   @@index([startedAt(sort: Desc)])
   @@map("scraping_jobs")
 }
+
+// ─────────────────────────────────────────────
+// AI Workflows
+// ─────────────────────────────────────────────
+
+model Workflow {
+  id           String         @id @default(cuid())
+  title        String
+  slug         String         @unique
+  description  String?        @db.Text
+  category     String         @default("General") // content-creation, marketing, coding, etc.
+  isPublic     Boolean        @default(true)
+  authorId     String?
+  featured     Boolean        @default(false)
+  usageCount   Int            @default(0)
+  steps        WorkflowStep[]
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  @@index([category])
+  @@index([featured])
+  @@map("workflows")
+}
+
+model WorkflowStep {
+  id          String   @id @default(cuid())
+  workflowId  String
+  workflow    Workflow  @relation(fields: [workflowId], references: [id], onDelete: Cascade)
+  stepOrder   Int
+  toolName    String
+  toolSlug    String?
+  action      String   // What is done in this step
+  description String?
+  config      Json?    // Optional config for the step
+
+  @@index([workflowId])
+  @@map("workflow_steps")
+}
+
+// ─────────────────────────────────────────────
+// Community Contributions
+// ─────────────────────────────────────────────
+
+enum SubmissionType {
+  TOOL_REVIEW
+  PROMPT
+  WORKFLOW
+  COMPARISON
+}
+
+enum SubmissionStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model CommunitySubmission {
+  id           String           @id @default(cuid())
+  type         SubmissionType
+  status       SubmissionStatus @default(PENDING)
+  title        String
+  content      String           @db.Text
+  metadata     Json?            // Flexible field for type-specific data
+  authorName   String?
+  authorEmail  String?
+  authorId     String?
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+
+  @@index([type])
+  @@index([status])
+  @@map("community_submissions")
+}
+
+// ─────────────────────────────────────────────
+// Ecosystem Relationships (for graph viz)
+// ─────────────────────────────────────────────
+
+model EcosystemRelation {
+  id              String   @id @default(cuid())
+  sourceType      String   // "tool", "model", "startup", "paper", "repo"
+  sourceId        String
+  sourceName      String
+  targetType      String
+  targetId        String
+  targetName      String
+  relationshipType String  // "uses", "owns", "integrates", "influences", "competes"
+  strength        Float    @default(0.5)  // 0-1
+  createdAt       DateTime @default(now())
+
+  @@index([sourceType, sourceId])
+  @@index([targetType, targetId])
+  @@unique([sourceId, targetId, relationshipType])
+  @@map("ecosystem_relations")
+}
+
+// ─────────────────────────────────────────────
+// Discovery Queue (Auto-discovery)
+// ─────────────────────────────────────────────
+
+model DiscoveryQueue {
+  id            String   @id @default(cuid())
+  source        String   // "producthunt", "github", "newsletter", etc.
+  toolName      String
+  toolUrl       String   @unique
+  description   String?  @db.Text
+  category      String?
+  score         Float    @default(0)
+  processed     Boolean  @default(false)
+  processedAt   DateTime?
+  discoveredAt  DateTime @default(now())
+
+  @@index([processed])
+  @@index([source])
+  @@map("discovery_queue")
+}

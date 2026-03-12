@@ -1,0 +1,141 @@
+c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\arxiv_scraper.py
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\arxiv_scraper.py:44:33 - error: Cannot access attribute "split" for class "list[FeedParserDict]"
+  ????Attribute "split" is unknown (reportAttributeAccessIssue)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\arxiv_scraper.py:44:33 - error: "split" is not a known attribute of "None" (reportOptionalMemberAccess)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\arxiv_scraper.py:44:55 - error: Operator "in" not supported for types "Literal['/abs/']" and "Unknown | list[FeedParserDict] | None"
+  ????Operator "in" not supported for types "Literal['/abs/']" and "None" (reportOperatorIssue)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\arxiv_scraper.py:49:42 - error: Argument of type "Unknown | FeedParserDict" cannot be assigned to parameter "year" of type "SupportsIndex" in function "__new__"
+  ????Type "Unknown | FeedParserDict" is not assignable to type "SupportsIndex"
+  ????????"FeedParserDict" is incompatible with protocol "SupportsIndex"
+  ????????????"__index__" is not present (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\arxiv_scraper.py:49:42 - error: Argument of type "Unknown | FeedParserDict" cannot be assigned to parameter "month" of type "SupportsIndex" in function "__new__"
+  ????Type "Unknown | FeedParserDict" is not assignable to type "SupportsIndex"
+  ????????"FeedParserDict" is incompatible with protocol "SupportsIndex"
+  ????????????"__index__" is not present (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\arxiv_scraper.py:49:42 - error: Argument of type "Unknown | FeedParserDict" cannot be assigned to parameter "day" of type "SupportsIndex" in function "__new__"
+  ????Type "Unknown | FeedParserDict" is not assignable to type "SupportsIndex"
+  ????????"FeedParserDict" is incompatible with protocol "SupportsIndex"
+  ????????????"__index__" is not present (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\arxiv_scraper.py:49:42 - error: Argument of type "Unknown | FeedParserDict" cannot be assigned to parameter "hour" of type "SupportsIndex" in function "__new__"
+  ????Type "Unknown | FeedParserDict" is not assignable to type "SupportsIndex"
+  ????????"FeedParserDict" is incompatible with protocol "SupportsIndex"
+  ????????????"__index__" is not present (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\arxiv_scraper.py:49:42 - error: Argument of type "Unknown | FeedParserDict" cannot be assigned to parameter "minute" of type "SupportsIndex" in function "__new__"
+  ????Type "Unknown | FeedParserDict" is not assignable to type "SupportsIndex"
+  ????????"FeedParserDict" is incompatible with protocol "SupportsIndex"
+  ????????????"__index__" is not present (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\arxiv_scraper.py:49:42 - error: Argument of type "Unknown | FeedParserDict" cannot be assigned to parameter "second" of type "SupportsIndex" in function "__new__"
+  ????Type "Unknown | FeedParserDict" is not assignable to type "SupportsIndex"
+  ????????"FeedParserDict" is incompatible with protocol "SupportsIndex"
+  ????????????"__index__" is not present (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\arxiv_scraper.py:49:42 - error: Argument of type "Unknown | FeedParserDict" cannot be assigned to parameter "microsecond" of type "SupportsIndex" in function "__new__"
+  ????Type "Unknown | FeedParserDict" is not assignable to type "SupportsIndex"
+  ????????"FeedParserDict" is incompatible with protocol "SupportsIndex"
+  ????????????"__index__" is not present (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\arxiv_scraper.py:49:42 - error: Argument of type "Unknown | FeedParserDict" cannot be assigned to parameter "tzinfo" of type "_TzInfo | None" in function "__new__"
+  ????Type "Unknown | FeedParserDict" is not assignable to type "_TzInfo | None"
+  ????????Type "FeedParserDict" is not assignable to type "_TzInfo | None"
+  ????????????"FeedParserDict" is not assignable to "tzinfo"
+  ????????????"FeedParserDict" is not assignable to "None" (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\arxiv_scraper.py:60:53 - error: Cannot access attribute "replace" for class "list[FeedParserDict]"
+  ????Attribute "replace" is unknown (reportAttributeAccessIssue)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\arxiv_scraper.py:60:53 - error: "replace" is not a known attribute of "None" (reportOptionalMemberAccess)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\arxiv_scraper.py:61:58 - error: Cannot access attribute "replace" for class "list[FeedParserDict]"
+  ????Attribute "replace" is unknown (reportAttributeAccessIssue)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\arxiv_scraper.py:61:58 - error: "replace" is not a known attribute of "None" (reportOptionalMemberAccess)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\arxiv_scraper.py:64:38 - error: Cannot access attribute "replace" for class "list[FeedParserDict]"
+  ????Attribute "replace" is unknown (reportAttributeAccessIssue)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\arxiv_scraper.py:64:38 - error: "replace" is not a known attribute of "None" (reportOptionalMemberAccess)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\arxiv_scraper.py:64:76 - error: Operator "in" not supported for types "Literal['/abs/']" and "Unknown | list[FeedParserDict] | None"
+  ????Operator "in" not supported for types "Literal['/abs/']" and "None" (reportOperatorIssue)
+c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\news_scraper.py
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\news_scraper.py:35:42 - error: Argument of type "Unknown | FeedParserDict" cannot be assigned to parameter "year" of type "SupportsIndex" in function "__new__"
+  ????Type "Unknown | FeedParserDict" is not assignable to type "SupportsIndex"
+  ????????"FeedParserDict" is incompatible with protocol "SupportsIndex"
+  ????????????"__index__" is not present (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\news_scraper.py:35:42 - error: Argument of type "Unknown | FeedParserDict" cannot be assigned to parameter "month" of type "SupportsIndex" in function "__new__"
+  ????Type "Unknown | FeedParserDict" is not assignable to type "SupportsIndex"
+  ????????"FeedParserDict" is incompatible with protocol "SupportsIndex"
+  ????????????"__index__" is not present (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\news_scraper.py:35:42 - error: Argument of type "Unknown | FeedParserDict" cannot be assigned to parameter "day" of type "SupportsIndex" in function "__new__"
+  ????Type "Unknown | FeedParserDict" is not assignable to type "SupportsIndex"
+  ????????"FeedParserDict" is incompatible with protocol "SupportsIndex"
+  ????????????"__index__" is not present (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\news_scraper.py:35:42 - error: Argument of type "Unknown | FeedParserDict" cannot be assigned to parameter "hour" of type "SupportsIndex" in function "__new__"
+  ????Type "Unknown | FeedParserDict" is not assignable to type "SupportsIndex"
+  ????????"FeedParserDict" is incompatible with protocol "SupportsIndex"
+  ????????????"__index__" is not present (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\news_scraper.py:35:42 - error: Argument of type "Unknown | FeedParserDict" cannot be assigned to parameter "minute" of type "SupportsIndex" in function "__new__"
+  ????Type "Unknown | FeedParserDict" is not assignable to type "SupportsIndex"
+  ????????"FeedParserDict" is incompatible with protocol "SupportsIndex"
+  ????????????"__index__" is not present (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\news_scraper.py:35:42 - error: Argument of type "Unknown | FeedParserDict" cannot be assigned to parameter "second" of type "SupportsIndex" in function "__new__"
+  ????Type "Unknown | FeedParserDict" is not assignable to type "SupportsIndex"
+  ????????"FeedParserDict" is incompatible with protocol "SupportsIndex"
+  ????????????"__index__" is not present (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\news_scraper.py:35:42 - error: Argument of type "Unknown | FeedParserDict" cannot be assigned to parameter "microsecond" of type "SupportsIndex" in function "__new__"
+  ????Type "Unknown | FeedParserDict" is not assignable to type "SupportsIndex"
+  ????????"FeedParserDict" is incompatible with protocol "SupportsIndex"
+  ????????????"__index__" is not present (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\news_scraper.py:35:42 - error: Argument of type "Unknown | FeedParserDict" cannot be assigned to parameter "tzinfo" of type "_TzInfo | None" in function "__new__"
+  ????Type "Unknown | FeedParserDict" is not assignable to type "_TzInfo | None"
+  ????????Type "FeedParserDict" is not assignable to type "_TzInfo | None"
+  ????????????"FeedParserDict" is not assignable to "tzinfo"
+  ????????????"FeedParserDict" is not assignable to "None" (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\news_scraper.py:38:30 - error: Object of type "None" is not subscriptable (reportOptionalSubscript)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\news_scraper.py:40:32 - error: Object of type "None" is not subscriptable (reportOptionalSubscript)
+c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\research_scraper.py
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\research_scraper.py:60:26 - error: Object of type "None" is not subscriptable (reportOptionalSubscript)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\research_scraper.py:69:42 - error: Argument of type "Unknown | FeedParserDict" cannot be assigned to parameter "year" of type "SupportsIndex" in function "__new__"
+  ????Type "Unknown | FeedParserDict" is not assignable to type "SupportsIndex"
+  ????????"FeedParserDict" is incompatible with protocol "SupportsIndex"
+  ????????????"__index__" is not present (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\research_scraper.py:69:42 - error: Argument of type "Unknown | FeedParserDict" cannot be assigned to parameter "month" of type "SupportsIndex" in function "__new__"
+  ????Type "Unknown | FeedParserDict" is not assignable to type "SupportsIndex"
+  ????????"FeedParserDict" is incompatible with protocol "SupportsIndex"
+  ????????????"__index__" is not present (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\research_scraper.py:69:42 - error: Argument of type "Unknown | FeedParserDict" cannot be assigned to parameter "day" of type "SupportsIndex" in function "__new__"
+  ????Type "Unknown | FeedParserDict" is not assignable to type "SupportsIndex"
+  ????????"FeedParserDict" is incompatible with protocol "SupportsIndex"
+  ????????????"__index__" is not present (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\research_scraper.py:69:42 - error: Argument of type "Unknown | FeedParserDict" cannot be assigned to parameter "hour" of type "SupportsIndex" in function "__new__"
+  ????Type "Unknown | FeedParserDict" is not assignable to type "SupportsIndex"
+  ????????"FeedParserDict" is incompatible with protocol "SupportsIndex"
+  ????????????"__index__" is not present (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\research_scraper.py:69:42 - error: Argument of type "Unknown | FeedParserDict" cannot be assigned to parameter "minute" of type "SupportsIndex" in function "__new__"
+  ????Type "Unknown | FeedParserDict" is not assignable to type "SupportsIndex"
+  ????????"FeedParserDict" is incompatible with protocol "SupportsIndex"
+  ????????????"__index__" is not present (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\research_scraper.py:69:42 - error: Argument of type "Unknown | FeedParserDict" cannot be assigned to parameter "second" of type "SupportsIndex" in function "__new__"
+  ????Type "Unknown | FeedParserDict" is not assignable to type "SupportsIndex"
+  ????????"FeedParserDict" is incompatible with protocol "SupportsIndex"
+  ????????????"__index__" is not present (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\research_scraper.py:69:42 - error: Argument of type "Unknown | FeedParserDict" cannot be assigned to parameter "microsecond" of type "SupportsIndex" in function "__new__"
+  ????Type "Unknown | FeedParserDict" is not assignable to type "SupportsIndex"
+  ????????"FeedParserDict" is incompatible with protocol "SupportsIndex"
+  ????????????"__index__" is not present (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\research_scraper.py:69:42 - error: Argument of type "Unknown | FeedParserDict" cannot be assigned to parameter "tzinfo" of type "_TzInfo | None" in function "__new__"
+  ????Type "Unknown | FeedParserDict" is not assignable to type "_TzInfo | None"
+  ????????Type "FeedParserDict" is not assignable to type "_TzInfo | None"
+  ????????????"FeedParserDict" is not assignable to "tzinfo"
+  ????????????"FeedParserDict" is not assignable to "None" (reportArgumentType)
+c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\startups_scraper.py
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\startups_scraper.py:54:30 - error: Object of type "None" cannot be used as iterable value (reportOptionalIterable)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\startups_scraper.py:60:35 - error: No overloads for "search" match the provided arguments (reportCallIssue)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\startups_scraper.py:60:56 - error: Argument of type "Unknown | list[FeedParserDict] | None" cannot be assigned to parameter "string" of type "str" in function "search"
+  ????Type "Unknown | list[FeedParserDict] | None" is not assignable to type "str"
+  ????????"list[FeedParserDict]" is not assignable to "str" (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\startups_scraper.py:61:37 - error: No overloads for "search" match the provided arguments (reportCallIssue)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\startups_scraper.py:61:60 - error: Argument of type "Unknown | list[FeedParserDict] | None" cannot be assigned to parameter "string" of type "str" in function "search"
+  ????Type "Unknown | list[FeedParserDict] | None" is not assignable to type "str"
+  ????????"list[FeedParserDict]" is not assignable to "str" (reportArgumentType)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\startups_scraper.py:84:45 - error: Cannot access attribute "lower" for class "list[FeedParserDict]"
+  ????Attribute "lower" is unknown (reportAttributeAccessIssue)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\startups_scraper.py:84:45 - error: "lower" is not a known attribute of "None" (reportOptionalMemberAccess)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\startups_scraper.py:114:34 - error: Operator "+" not supported for types "Unknown | list[FeedParserDict] | None" and "Literal[' - ']"
+  ????Operator "+" not supported for types "list[FeedParserDict]" and "Literal[' - ']"
+  ????Operator "+" not supported for types "None" and "Literal[' - ']" (reportOperatorIssue)
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\startups_scraper.py:115:33 - error: Object of type "None" is not subscriptable (reportOptionalSubscript)
+c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\tools_scraper.py
+  c:\Users\Admin\Desktop\Tech-Stack\aios\workers\scrapers\tools_scraper.py:59:30 - error: Object of type "None" cannot be used as iterable value (reportOptionalIterable)
+47 errors, 0 warnings, 0 informations

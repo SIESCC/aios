@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   LayoutDashboard, Zap, Brain, BookOpen, Github, Building2,
   MessageSquare, TrendingUp, ChevronLeft, Activity,
-  Sparkles
+  Sparkles, GitBranch, Network, Users
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
@@ -20,6 +20,9 @@ const navItems = [
   { href: "/startups", label: "Startups", icon: Building2 },
   { href: "/prompts", label: "Prompts", icon: MessageSquare },
   { href: "/trends", label: "Trends", icon: TrendingUp },
+  { href: "/ecosystem", label: "Ecosystem", icon: Network },
+  { href: "/workflows", label: "Workflows", icon: GitBranch },
+  { href: "/community", label: "Community", icon: Users },
 ];
 
 export function Sidebar() {
