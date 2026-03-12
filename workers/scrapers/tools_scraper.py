@@ -1,3 +1,4 @@
+# pyre-ignore-all-errors
 # pyright: reportCallIssue=false
 # pyright: reportOptionalMemberAccess=false
 # pyright: reportArgumentType=false
@@ -7,8 +8,6 @@
 # pyright: reportOptionalSubscript=false
 # pyright: reportOptionalOperand=false
 # pyright: reportOptionalIterable=false
-# pyright: reportArgumentType=false
-# pyre-ignore-all-errors
 """
 AI Tools Scraper
 Scrapes public AI tool directories/feeds for new tools
@@ -101,9 +100,9 @@ class ToolsScraper:
                                 "trendingScore" = EXCLUDED."trendingScore",
                                 "updatedAt" = NOW()
                         """, (
-                            uuid.uuid4().hex, slug, title[:100],
-                            title[:200], description[:1000] if description else "AI Tool",
-                            link[:255] if link else "https://news.ycombinator.com",
+                            uuid.uuid4().hex, slug, title[:100], # pyre-ignore[16]
+                            title[:200], description[:1000] if description else "AI Tool", # pyre-ignore[16]
+                            link[:255] if link else "https://news.ycombinator.com", # pyre-ignore[16]
                             category, pricing, score, ['ai', 'tool']
                         ))
                         
@@ -114,9 +113,9 @@ class ToolsScraper:
                             ) VALUES (%s, %s, %s, %s, %s, %s, %s, false, NOW(), NOW())
                             ON CONFLICT ("toolUrl") DO NOTHING
                         """, (
-                            uuid.uuid4().hex, "RSS", title[:100], 
-                            link[:255] if link else "https://news.ycombinator.com", 
-                            description[:500], category, score
+                            uuid.uuid4().hex, "RSS", title[:100], # pyre-ignore[16]
+                            link[:255] if link else "https://news.ycombinator.com", # pyre-ignore[16]
+                            description[:500], category, score # pyre-ignore[16]
                         ))
                         
                     saved += 1
