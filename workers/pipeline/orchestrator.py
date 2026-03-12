@@ -32,7 +32,7 @@ from scrapers.models_scraper import ModelsScraper  # pyre-ignore[21]
 from scrapers.startups_scraper import StartupsScraper  # pyre-ignore[21]
 from scrapers.prompts_scraper import PromptsScraper  # pyre-ignore[21]
 from ai_processor.summarizer import AISummarizer  # pyre-ignore[21]
-
+from pipeline.seeder import run_seed  # new baseline seeder
 
 def run_github_scraper():
     """Fetch trending AI GitHub repositories"""
@@ -124,6 +124,9 @@ def run_summarizer():
 
 def main():
     logger.info("🚀 AIOS Orchestrator starting...")
+    
+    # Initialize baseline database configurations for new platform features
+    run_seed()
 
     # Run immediately on startup
     run_arxiv_scraper()

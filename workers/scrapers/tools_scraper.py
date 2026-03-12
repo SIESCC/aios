@@ -101,11 +101,24 @@ class ToolsScraper:
                                 "trendingScore" = EXCLUDED."trendingScore",
                                 "updatedAt" = NOW()
                         """, (
-                            uuid.uuid4().hex, slug, title[:100], # pyre-ignore[16]
-                            title[:200], description[:1000] if description else "AI Tool", # pyre-ignore[16]
-                            link[:255] if link else "https://news.ycombinator.com", # pyre-ignore[16]
+                            uuid.uuid4().hex, slug, title[:100],
+                            title[:200], description[:1000] if description else "AI Tool",
+                            link[:255] if link else "https://news.ycombinator.com",
                             category, pricing, score, ['ai', 'tool']
                         ))
+                        
+                        # Also push to the discovery queue
+                        cur.execute("""
+                            INSERT INTO discovery_queue (
+                                id, source, "toolName", "toolUrl", description, category, score, processed, "discoveredAt", "updatedAt"
+                            ) VALUES (%s, %s, %s, %s, %s, %s, %s, false, NOW(), NOW())
+                            ON CONFLICT ("toolUrl") DO NOTHING
+                        """, (
+                            uuid.uuid4().hex, "RSS", title[:100], 
+                            link[:255] if link else "https://news.ycombinator.com", 
+                            description[:500], category, score
+                        ))
+                        
                     saved += 1
                     total_found += 1
 
