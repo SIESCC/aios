@@ -2,11 +2,16 @@
 // ============================================================
 // Admin Routes — Content management + monitoring
 // ============================================================
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const prisma_1 = require("../lib/prisma");
 const auth_1 = require("../middleware/auth");
 const redis_1 = require("../lib/redis");
+const fs_1 = __importDefault(require("fs"));
+const path_1 = __importDefault(require("path"));
 const zod_1 = require("zod");
 const logger_1 = require("../lib/logger");
 const router = (0, express_1.Router)();
@@ -121,7 +126,7 @@ router.patch('/prompts/:id/approve', async (req, res) => {
 // ── System Stats ───────────────────────────────────────────
 // GET /api/admin/stats
 router.get('/stats', async (_req, res) => {
-    const [totalUsers, totalTools, pendingTools, totalPapers, totalRepos, totalStartups, totalPrompts, scrapingJobs,] = await Promise.all([
+    const [totalUsers, totalTools, pendingTools, totalPapers, totalRepos, totalStartups, totalPrompts, scrapingJobs, totalDataSaved] = await Promise.all([
         prisma_1.prisma.user.count(),
         prisma_1.prisma.aiTool.count(),
         prisma_1.prisma.aiTool.count({ where: { status: 'PENDING' } }),
@@ -133,11 +138,65 @@ router.get('/stats', async (_req, res) => {
             orderBy: { startedAt: 'desc' },
             take: 20,
         }),
+        prisma_1.prisma.scrapingJob.aggregate({
+            _sum: { itemsSaved: true }
+        })
     ]);
     res.json({
         stats: { totalUsers, totalTools, pendingTools, totalPapers, totalRepos, totalStartups, totalPrompts },
         recentJobs: scrapingJobs,
+        totalScraped: totalDataSaved._sum.itemsSaved || 0
     });
+});
+// GET /api/admin/system/health
+router.get('/system/health', async (_req, res) => {
+    try {
+        let redisStatus = 'unknown';
+        try {
+            const redisClient = require('../lib/redis').redis;
+            redisStatus = await redisClient.ping() === 'PONG' ? 'healthy' : 'unreachable';
+        }
+        catch {
+            redisStatus = 'error';
+        }
+        let pythonStatus = 'unknown';
+        try {
+            const pythonUrl = process.env.INTERNAL_FASTAPI_URL || 'http://localhost:8000/api/v1/health';
+            // simple fetch with timeout
+            const pyReq = await fetch(pythonUrl, { signal: AbortSignal.timeout(3000) });
+            pythonStatus = pyReq.ok ? 'healthy' : 'error';
+        }
+        catch {
+            pythonStatus = 'unreachable';
+        }
+        res.json({
+            database: 'healthy',
+            redis: redisStatus,
+            nodeBackend: 'healthy',
+            pythonWorkers: pythonStatus,
+            timestamp: new Date().toISOString()
+        });
+    }
+    catch (err) {
+        res.status(500).json({ error: 'Failed to fetch system health' });
+    }
+});
+// GET /api/admin/system/logs
+router.get('/system/logs', async (_req, res) => {
+    try {
+        const logPath = path_1.default.join(process.cwd(), 'logs', 'combined.log');
+        if (fs_1.default.existsSync(logPath)) {
+            const content = fs_1.default.readFileSync(logPath, 'utf8');
+            const lines = content.split('\n').filter(Boolean).slice(-200);
+            res.json({ logs: lines });
+        }
+        else {
+            res.json({ logs: ['Log file not found or running in ephemeral Docker environment.'] });
+        }
+    }
+    catch (e) {
+        res.status(500).json({ error: 'Failed to read logs' });
+    }
 });
 // GET /api/admin/jobs — Scraping job history
 router.get('/jobs', async (req, res) => {

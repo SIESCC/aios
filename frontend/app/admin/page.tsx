@@ -3,7 +3,7 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Shield, Activity, Clock, CheckCircle, XCircle, Users, BarChart2, RefreshCw } from "lucide-react";
+import { Shield, Activity, Clock, CheckCircle, XCircle, Users, BarChart2, RefreshCw, Terminal, Server, HardDrive } from "lucide-react";
 import { apiFetch } from "@/lib/api";
 import { cn, formatDate, formatRelativeTime } from "@/lib/utils";
 
@@ -21,10 +21,28 @@ function usePendingTools() {
   });
 }
 
+function useSystemHealth() {
+  return useQuery({
+    queryKey: ["admin-system-health"],
+    queryFn: () => apiFetch("/admin/system/health"),
+    refetchInterval: 30000
+  });
+}
+
+function useSystemLogs() {
+  return useQuery({
+    queryKey: ["admin-system-logs"],
+    queryFn: () => apiFetch("/admin/system/logs"),
+    refetchInterval: 5000
+  });
+}
+
 export default function AdminPage() {
   const [activeTab, setActiveTab] = useState("overview");
   const { data: stats } = useAdminStats();
   const { data: pendingTools } = usePendingTools();
+  const { data: health } = useSystemHealth();
+  const { data: logs } = useSystemLogs();
   const queryClient = useQueryClient();
 
   const approveTool = useMutation({
@@ -46,6 +64,8 @@ export default function AdminPage() {
     { id: "overview", label: "Overview", icon: BarChart2 },
     { id: "tools", label: `Pending Tools${stats?.stats?.pendingTools ? ` (${stats.stats.pendingTools})` : ""}`, icon: CheckCircle },
     { id: "jobs", label: "Scraping Jobs", icon: Activity },
+    { id: "health", label: "System Health", icon: Server },
+    { id: "logs", label: "Server Logs", icon: Terminal },
     { id: "users", label: "Users", icon: Users },
   ];
 
@@ -85,6 +105,7 @@ export default function AdminPage() {
         <div className="space-y-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
+              { label: "Total Data Scraped", value: stats?.totalScraped || 0, color: "text-blue-400" },
               { label: "Total Users", value: stats?.stats?.totalUsers || 0, color: "text-brand-400" },
               { label: "AI Tools", value: stats?.stats?.totalTools || 0, color: "text-green-400" },
               { label: "Pending Approval", value: stats?.stats?.pendingTools || 0, color: "text-yellow-400" },
@@ -214,6 +235,81 @@ export default function AdminPage() {
                 ))}
               </tbody>
             </table>
+          </div>
+        </div>
+      )}
+
+      {/* System Health */}
+      {activeTab === "health" && (
+        <div className="space-y-4">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="font-semibold text-sm">Infrastructure Status</h3>
+            <button
+              onClick={() => queryClient.invalidateQueries({ queryKey: ["admin-system-health"] })}
+              className="p-1.5 rounded-lg hover:bg-white/[0.04] text-muted-foreground hover:text-foreground transition-all"
+            >
+              <RefreshCw className="w-4 h-4" />
+            </button>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { label: "PostgreSQL Database", value: health?.database, icon: HardDrive },
+              { label: "Redis Cache Queue", value: health?.redis, icon: Server },
+              { label: "Node.js API Server", value: health?.nodeBackend, icon: Activity },
+              { label: "Python Scraper Engine", value: health?.pythonWorkers, icon: Terminal },
+            ].map(s => (
+              <div key={s.label} className="glass-card p-5">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-8 h-8 rounded bg-white/[0.05] border border-white/[0.05] flex items-center justify-center">
+                    <s.icon className="w-4 h-4 text-muted-foreground" />
+                  </div>
+                  <h4 className="text-sm font-medium">{s.label}</h4>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className={cn(
+                    "w-2.5 h-2.5 rounded-full",
+                    s.value === "healthy" ? "bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]" :
+                    s.value === "unreachable" ? "bg-yellow-500 shadow-[0_0_8px_rgba(234,179,8,0.4)]" :
+                    "bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.4)]"
+                  )} />
+                  <span className="text-sm uppercase tracking-wider font-semibold text-muted-foreground">
+                    {s.value || "Loading..."}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* System Logs */}
+      {activeTab === "logs" && (
+        <div className="glass-card p-0 overflow-hidden flex flex-col h-[600px]">
+          <div className="flex items-center justify-between p-4 border-b border-white/[0.05]">
+            <h3 className="font-semibold text-sm flex items-center gap-2">
+              <Terminal className="w-4 h-4 text-brand-400" />
+              Live Server Logs
+            </h3>
+            <button
+              onClick={() => queryClient.invalidateQueries({ queryKey: ["admin-system-logs"] })}
+              className="btn-secondary text-xs py-1.5 px-3"
+            >
+              <RefreshCw className="w-3.5 h-3.5 mr-1" /> View Latest
+            </button>
+          </div>
+          <div className="p-4 bg-background font-mono text-xs overflow-y-auto flex-1 text-muted-foreground space-y-1">
+            {!logs?.logs?.length && "Waiting for logs..."}
+            {logs?.logs?.map((line: string, i: number) => (
+              <div key={i} className="whitespace-pre-wrap break-all border-b border-white/[0.02] pb-1">
+                {line.includes('error') || line.includes('Failed') ? (
+                  <span className="text-red-400">{line}</span>
+                ) : line.includes('warn') ? (
+                  <span className="text-yellow-400">{line}</span>
+                ) : (
+                  line
+                )}
+              </div>
+            ))}
           </div>
         </div>
       )}

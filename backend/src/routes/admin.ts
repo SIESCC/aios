@@ -6,6 +6,8 @@ import { Router, Request, Response } from 'express';
 import { prisma } from '../lib/prisma';
 import { authenticate, requireAdmin } from '../middleware/auth';
 import { cache } from '../lib/redis';
+import fs from 'fs';
+import path from 'path';
 
 import { z } from 'zod';
 import { logger } from '../lib/logger';
@@ -135,7 +137,7 @@ router.get('/stats', async (_req: Request, res: Response) => {
   const [
     totalUsers, totalTools, pendingTools,
     totalPapers, totalRepos, totalStartups, totalPrompts,
-    scrapingJobs,
+    scrapingJobs, totalDataSaved
   ] = await Promise.all([
     prisma.user.count(),
     prisma.aiTool.count(),
@@ -148,12 +150,63 @@ router.get('/stats', async (_req: Request, res: Response) => {
       orderBy: { startedAt: 'desc' },
       take: 20,
     }),
+    prisma.scrapingJob.aggregate({
+      _sum: { itemsSaved: true }
+    })
   ]);
 
   res.json({
     stats: { totalUsers, totalTools, pendingTools, totalPapers, totalRepos, totalStartups, totalPrompts },
     recentJobs: scrapingJobs,
+    totalScraped: totalDataSaved._sum.itemsSaved || 0
   });
+});
+
+// GET /api/admin/system/health
+router.get('/system/health', async (_req, res) => {
+  try {
+    let redisStatus = 'unknown';
+    try {
+      const redisClient = require('../lib/redis').redis;
+      redisStatus = await redisClient.ping() === 'PONG' ? 'healthy' : 'unreachable';
+    } catch { redisStatus = 'error'; }
+
+    let pythonStatus = 'unknown';
+    try {
+      const pythonUrl = process.env.INTERNAL_FASTAPI_URL || 'http://localhost:8000/api/v1/health';
+      // simple fetch with timeout
+      const pyReq = await fetch(pythonUrl, { signal: AbortSignal.timeout(3000) });
+      pythonStatus = pyReq.ok ? 'healthy' : 'error';
+    } catch {
+      pythonStatus = 'unreachable';
+    }
+
+    res.json({
+      database: 'healthy',
+      redis: redisStatus,
+      nodeBackend: 'healthy',
+      pythonWorkers: pythonStatus,
+      timestamp: new Date().toISOString()
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch system health' });
+  }
+});
+
+// GET /api/admin/system/logs
+router.get('/system/logs', async (_req, res) => {
+  try {
+    const logPath = path.join(process.cwd(), 'logs', 'combined.log');
+    if (fs.existsSync(logPath)) {
+      const content = fs.readFileSync(logPath, 'utf8');
+      const lines = content.split('\n').filter(Boolean).slice(-200);
+      res.json({ logs: lines });
+    } else {
+      res.json({ logs: ['Log file not found or running in ephemeral Docker environment.'] });
+    }
+  } catch(e) {
+    res.status(500).json({ error: 'Failed to read logs' });
+  }
 });
 
 // GET /api/admin/jobs — Scraping job history
