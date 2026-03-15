@@ -95,7 +95,7 @@ class ToolsScraper:
                             INSERT INTO ai_tools (
                                 id, slug, name, tagline, description, website, category, 
                                 pricing, status, "trendingScore", tags, "updatedAt"
-                            ) VALUES (%s, %s, %s, %s, %s, %s, %s, 'APPROVED', %s, %s, NOW())
+                            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, 'APPROVED', %s, %s, NOW())
                             ON CONFLICT (slug) DO UPDATE SET
                                 "trendingScore" = EXCLUDED."trendingScore",
                                 "updatedAt" = NOW()
@@ -144,7 +144,7 @@ class ToolsScraper:
                                 INSERT INTO ai_tools (
                                     id, slug, name, tagline, description, website, category, 
                                     pricing, status, "trendingScore", tags, "updatedAt"
-                                ) VALUES (%s, %s, %s, %s, %s, %s, %s, 'APPROVED', %s, %s, NOW())
+                                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, 'APPROVED', %s, %s, NOW())
                                 ON CONFLICT (slug) DO UPDATE SET
                                     "trendingScore" = EXCLUDED."trendingScore",
                                     "updatedAt" = NOW()

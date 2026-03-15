@@ -159,7 +159,8 @@ export default function EcosystemPage() {
       animFrameRef.current = requestAnimationFrame(simulate);
     }
     return () => cancelAnimationFrame(animFrameRef.current);
-  }, [nodes.length > 0, simulate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [nodes.length, simulate]);
 
   // Draw canvas
   useEffect(() => {

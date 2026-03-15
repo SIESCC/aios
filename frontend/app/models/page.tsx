@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
-import { Brain, Trophy, Crown, Code2, Image, Mic } from "lucide-react";
+import { Brain, Trophy, Crown, Code2, Image, Mic, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 import { api } from "@/lib/api";
 import { cn, MODEL_TYPE_COLORS, formatNumber, formatDate } from "@/lib/utils";
 
@@ -89,7 +90,7 @@ export default function ModelsPage() {
 
               {/* Model */}
               <div className="col-span-3">
-                <p className="font-semibold text-sm group-hover:text-brand-300 transition-colors">{model.name}</p>
+                <Link href={`/models/${model.slug}`} className="font-semibold text-sm group-hover:text-brand-300 transition-colors hover:underline">{model.name}</Link>
                 {model.parameterCount && (
                   <p className="text-xs text-muted-foreground font-mono">{model.parameterCount}</p>
                 )}

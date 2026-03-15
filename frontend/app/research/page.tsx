@@ -7,6 +7,7 @@ import {
   BookOpen, ChevronDown, ChevronUp, ExternalLink, Award,
   Brain, Lightbulb, Target, Sparkles, Search
 } from "lucide-react";
+import Link from "next/link";
 import { api } from "@/lib/api";
 import { formatDate, cn } from "@/lib/utils";
 
@@ -139,7 +140,11 @@ export default function ResearchPage() {
                         </span>
                       )}
                     </div>
-                    <h3 className="font-semibold text-sm leading-relaxed">{paper.title}</h3>
+                    <h3 className="font-semibold text-sm leading-relaxed">
+                      <Link href={`/research/${paper.id}`} className="hover:text-brand-300 transition-colors">
+                        {paper.title}
+                      </Link>
+                    </h3>
                     <p className="text-xs text-muted-foreground mt-1">
                       {paper.authors?.slice(0, 3).join(", ")}{paper.authors?.length > 3 ? " et al." : ""}
                       {paper.publicationDate && ` · ${formatDate(paper.publicationDate)}`}

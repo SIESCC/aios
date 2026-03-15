@@ -44,4 +44,4 @@ COPY --from=builder /app/prisma ./prisma
 RUN mkdir -p logs && chown expressjs:nodejs logs
 USER expressjs
 EXPOSE 4000
-CMD ["node", "dist/index.js"]
+CMD npx prisma db push && node dist/seed.js && node dist/index.js

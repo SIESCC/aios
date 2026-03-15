@@ -29,6 +29,11 @@ const prompts_1 = __importDefault(require("./routes/prompts"));
 const trends_1 = __importDefault(require("./routes/trends"));
 const search_1 = __importDefault(require("./routes/search"));
 const admin_1 = __importDefault(require("./routes/admin"));
+const workflows_1 = __importDefault(require("./routes/workflows"));
+const community_1 = __importDefault(require("./routes/community"));
+const ecosystem_1 = __importDefault(require("./routes/ecosystem"));
+const recommend_1 = __importDefault(require("./routes/recommend"));
+const discovery_1 = __importDefault(require("./routes/discovery"));
 (0, dotenv_1.config)();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 4000;
@@ -110,6 +115,11 @@ app.use('/api/prompts', prompts_1.default);
 app.use('/api/trends', trends_1.default);
 app.use('/api/search', search_1.default);
 app.use('/api/admin', admin_1.default);
+app.use('/api/workflows', workflows_1.default);
+app.use('/api/community', community_1.default);
+app.use('/api/ecosystem', ecosystem_1.default);
+app.use('/api/recommend', recommend_1.default);
+app.use('/api/discovery', discovery_1.default);
 // ─────────────────────────────────────────────
 // 404 & Error Handlers
 // ─────────────────────────────────────────────

@@ -169,5 +169,32 @@ router.patch('/users/:id/role', async (req, res) => {
     });
     res.json(user);
 });
+// ── Community Submission Management ───────────────────────
+// GET /api/admin/community/pending
+router.get('/community/pending', async (_req, res) => {
+    const submissions = await prisma_1.prisma.communitySubmission.findMany({
+        where: { status: 'PENDING' },
+        orderBy: { createdAt: 'desc' },
+    });
+    res.json(submissions);
+});
+// PATCH /api/admin/community/:id/approve
+router.patch('/community/:id/approve', async (req, res) => {
+    const submission = await prisma_1.prisma.communitySubmission.update({
+        where: { id: req.params.id },
+        data: { status: 'APPROVED' },
+    });
+    await redis_1.cache.invalidatePattern('community:*');
+    res.json(submission);
+});
+// PATCH /api/admin/community/:id/reject
+router.patch('/community/:id/reject', async (req, res) => {
+    const submission = await prisma_1.prisma.communitySubmission.update({
+        where: { id: req.params.id },
+        data: { status: 'REJECTED' },
+    });
+    await redis_1.cache.invalidatePattern('community:*');
+    res.json(submission);
+});
 exports.default = router;
 //# sourceMappingURL=admin.js.map

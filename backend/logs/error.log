@@ -195,3 +195,4 @@ Details: Error loading shared library libssl.so.1.1: No such file or directory (
     at async _r.instantiateLibrary (/app/node_modules/@prisma/client/runtime/library.js:111:12599)
     at async _r.start (/app/node_modules/@prisma/client/runtime/library.js:112:1976)
     at async start (/app/dist/index.js:120:9)
+2026-03-15 10:55:48 [[31merror[39m]: Redis error:
