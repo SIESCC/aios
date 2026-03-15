@@ -110,7 +110,7 @@ class StartupsScraper:
                                     id, name, slug, description, website, industry, 
                                     "fundingAmount", "fundingRound",
                                     "trendingScore", tags, "fundingDate", "updatedAt"
-                                ) VALUES (%s, %s, %s, %s, %s, 'AI', %s, %s, %s, %s, NOW(), NOW())
+                                ) VALUES (%s, %s, %s, %s, %s, 'AI', %s, CAST(%s AS "FundingRound"), %s, %s, NOW(), NOW())
                                 ON CONFLICT (slug) DO UPDATE SET
                                     "fundingAmount" = EXCLUDED."fundingAmount",
                                     "fundingRound" = EXCLUDED."fundingRound",

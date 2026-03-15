@@ -88,7 +88,7 @@ class ModelsScraper:
                         INSERT INTO ai_models (
                             id, slug, name, organization, description, "modelType", 
                             "openSource", "apiAvailable", "trendingScore", capabilities, "releaseDate", "updatedAt"
-                        ) VALUES (%s, %s, %s, %s, %s, %s, true, true, %s, %s, %s, NOW())
+                        ) VALUES (%s, %s, %s, %s, %s, CAST(%s AS "ModelType"), true, true, %s, %s, %s, NOW())
                         ON CONFLICT (slug) DO UPDATE SET
                             "trendingScore" = EXCLUDED."trendingScore",
                             "updatedAt" = NOW()
