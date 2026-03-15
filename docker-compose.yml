@@ -150,6 +150,29 @@ services:
     depends_on:
       - redis
 
+  # ─────────────────────────────────────────────
+  # FastAPI Python Backend
+  # ─────────────────────────────────────────────
+  fastapi:
+    build:
+      context: ./aios_api
+      dockerfile: Dockerfile
+    container_name: aios_fastapi
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-aios}:${POSTGRES_PASSWORD:-aios_secret}@postgres:5432/${POSTGRES_DB:-aios_db}
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_secret}@redis:6379
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
+
 # ─────────────────────────────────────────────
 # Persistent Volumes
 # ─────────────────────────────────────────────
