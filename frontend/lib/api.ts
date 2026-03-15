@@ -14,6 +14,10 @@ interface ExtendedRequestInit extends RequestInit {
   };
 }
 
+const FASTAPI_BASE = isServer
+  ? (process.env.INTERNAL_FASTAPI_URL || "http://fastapi:8000/api/v1")
+  : (process.env.NEXT_PUBLIC_FASTAPI_URL || "/api/v1");
+
 export async function apiFetch<T = any>(
   endpoint: string,
   options?: ExtendedRequestInit & { token?: string }
@@ -29,7 +33,15 @@ export async function apiFetch<T = any>(
     headers["Authorization"] = `Bearer ${token}`;
   }
 
-  const url = endpoint.startsWith("http") ? endpoint : `${API_BASE}${endpoint}`;
+  // Route specific endpoints to FastAPI
+  const isFastApiRoute = endpoint.startsWith("/search") || 
+                         endpoint.startsWith("/trending") || 
+                         endpoint.startsWith("/analytics") || 
+                         endpoint.startsWith("/alerts") ||
+                         endpoint.startsWith("/latest");
+
+  const base = isFastApiRoute ? FASTAPI_BASE : API_BASE;
+  const url = endpoint.startsWith("http") ? endpoint : `${base}${endpoint}`;
   const method = fetchOptions.method || "GET";
   
   const response = await fetch(url, {
